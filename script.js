@@ -291,10 +291,10 @@
         if (desc) li.append(criar('p', 'item__desc', desc));
         const caixa = criar('div', 'item__precos');
         precos.forEach((valor, i) => {
-          if (!valor) return; // tamanho que não existe para este item
+          if (!valor && grupo.colunas.length === 1) return; // Tamanho que não existe para itens de coluna única
           const preco = criar('span', 'preco');
           if (grupo.colunas.length > 1) preco.append(criar('small', null, grupo.colunas[i]));
-          preco.append(criar('b', null, formatarPreco(valor)));
+          preco.append(criar('b', null, valor ? formatarPreco(valor) : '—'));
           caixa.append(preco);
         });
         li.append(caixa);
