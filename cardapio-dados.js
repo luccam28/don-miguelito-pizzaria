@@ -6,6 +6,40 @@
 */
 window.CARDAPIO = [
   {
+    id: 'entradas', curto: 'Crostini e Pizza rolls', titulo: 'Crostini e Pizza rolls',
+    grupos: [
+      {
+        titulo: 'Crostini', colunas: [],
+        dados: `
+Crostini de Parmesão com Alecrim e Manjericão|Acompanha molho Don Miguelito|37,90
+`
+      },
+      {
+        titulo: 'Pizza Rolls', nota: 'Porção com 8 unidades.', colunas: [],
+        dados: `
+Atum|Atum em pedaços com cream cheese, alho-poró e parmesão|59,90
+Calabresa Moída com Mussarela|Calabresa moída com mussarela, parmesão e Catupiry|49,90
+Goiabada com Catupiry|Goiabada com Catupiry|49,90
+Queijo Brie com Mel|Queijo brie com mel|59,90
+Romeu e Julieta|Goiabada com mussarela|54,90
+`
+      }
+    ]
+  },
+  {
+    id: 'calzones', curto: 'Calzones', titulo: 'Calzones',
+    grupos: [{
+      colunas: [],
+      dados: `
+Calzone Calabresa|Calabresa, cebola roxa, cheddar e mussarela|69,90
+Calzone Dois Queijos|Dois queijos|59,90
+Calzone Frango|Frango, Catupiry, milho, mussarela e bacon|73,90
+Calzone Quatro Queijos|Mussarela, Catupiry, provolone e gorgonzola|79,90
+Calzone Vegetariana|Milho, palmito, ervilha, brócolis, tomate-cereja e mussarela|69,90
+`
+    }]
+  },
+  {
     id: 'pizzas-salgadas', curto: 'Pizzas salgadas', titulo: 'Pizzas salgadas',
     intro: 'Todas em dois tamanhos: broto e grande. Alguns sabores existem só no broto.',
     grupos: [{
@@ -83,35 +117,6 @@ Vegetariana|Brócolis, palmito, ervilha fresca, milho, tomate-cereja e mussarela
     }]
   },
   {
-    id: 'pizzas-doces', curto: 'Pizzas doces', titulo: 'Pizzas doces',
-    intro: 'Também em broto e grande.',
-    grupos: [{
-      colunas: ['Broto', 'Grande'],
-      dados: `
-Abacaxi|Doce de leite, abacaxi e canela|49,90|65,90
-Banana|Banana, leite condensado e canela em pó|43,90|49,90
-Banana Nevada|Creme de leite, banana, canela e chocolate branco|49,90|65,90
-Banoffee|Banana flambada com canela, chocolate branco e doce de leite|54,90|76,90
-Benjamim Duo|Chocolate ao leite, chocolate preto e Negresco|49,90|65,90
-Brigadeiro|Chocolate com cobertura de granulado|43,90|58,90
-Chocolate ao Leite|Chocolate ao leite|43,90|54,90
-Chocolate Branco com Frutas Vermelhas|Chocolate branco com frutas vermelhas|49,90|65,90
-Chocolate com Uva|Chocolate com uva|52,90|61,90
-Cream Cheese com Frutas Vermelhas|Cream cheese com frutas vermelhas|54,90|65,90
-Doce de Leite com Uva|Doce de leite com uva||65,90
-Kit Kat|Chocolate e Kit Kat em pedaços|48,90|63,90
-Lucy|Doce de leite e coco|49,90|64,90
-Miguelito|Chocolate e M&M's|65,90|76,90
-Mussarela com Doce de Leite|Mussarela com doce de leite|60,90|70,90
-Nutella com Morango|Nutella e morango|60,90|75,90
-Prestígio|Chocolate ao leite e coco ralado fresco|54,90|65,90
-Romeu & Julieta com Catupiry|Goiabada e Catupiry|60,90|64,90
-Romeu & Julieta com Mussarela|Goiabada e mussarela|39,90|64,90
-Sensação|Chocolate e morango|54,90|65,90
-`
-    }]
-  },
-  {
     id: 'bordas', curto: 'Bordas e adicionais', titulo: 'Bordas e adicionais',
     intro: 'Capriche na borda ou turbine o sabor com um adicional.',
     grupos: [
@@ -163,6 +168,35 @@ Borda Vulcão de Mussarela|||30,00
 `
       }
     ]
+  },
+  {
+    id: 'pizzas-doces', curto: 'Pizzas doces', titulo: 'Pizzas doces',
+    intro: 'Também em broto e grande.',
+    grupos: [{
+      colunas: ['Broto', 'Grande'],
+      dados: `
+Abacaxi|Doce de leite, abacaxi e canela|49,90|65,90
+Banana|Banana, leite condensado e canela em pó|43,90|49,90
+Banana Nevada|Creme de leite, banana, canela e chocolate branco|49,90|65,90
+Banoffee|Banana flambada com canela, chocolate branco e doce de leite|54,90|76,90
+Benjamim Duo|Chocolate ao leite, chocolate preto e Negresco|49,90|65,90
+Brigadeiro|Chocolate com cobertura de granulado|43,90|58,90
+Chocolate ao Leite|Chocolate ao leite|43,90|54,90
+Chocolate Branco com Frutas Vermelhas|Chocolate branco com frutas vermelhas|49,90|65,90
+Chocolate com Uva|Chocolate com uva|52,90|61,90
+Cream Cheese com Frutas Vermelhas|Cream cheese com frutas vermelhas|54,90|65,90
+Doce de Leite com Uva|Doce de leite com uva||65,90
+Kit Kat|Chocolate e Kit Kat em pedaços|48,90|63,90
+Lucy|Doce de leite e coco|49,90|64,90
+Miguelito|Chocolate e M&M's|65,90|76,90
+Mussarela com Doce de Leite|Mussarela com doce de leite|60,90|70,90
+Nutella com Morango|Nutella e morango|60,90|75,90
+Prestígio|Chocolate ao leite e coco ralado fresco|54,90|65,90
+Romeu & Julieta com Catupiry|Goiabada e Catupiry|60,90|64,90
+Romeu & Julieta com Mussarela|Goiabada e mussarela|39,90|64,90
+Sensação|Chocolate e morango|54,90|65,90
+`
+    }]
   },
   {
     id: 'esfihas', curto: 'Esfihas', titulo: 'Esfihas',
@@ -235,40 +269,6 @@ Mussarela com Doce de Leite||19,90
 Nutella com Kiwi||19,90
 Nutella com Morango||19,90
 Prestígio||17,90
-`
-      }
-    ]
-  },
-  {
-    id: 'calzones', curto: 'Calzones', titulo: 'Calzones',
-    grupos: [{
-      colunas: [],
-      dados: `
-Calzone Calabresa|Calabresa, cebola roxa, cheddar e mussarela|69,90
-Calzone Dois Queijos|Dois queijos|59,90
-Calzone Frango|Frango, Catupiry, milho, mussarela e bacon|73,90
-Calzone Quatro Queijos|Mussarela, Catupiry, provolone e gorgonzola|79,90
-Calzone Vegetariana|Milho, palmito, ervilha, brócolis, tomate-cereja e mussarela|69,90
-`
-    }]
-  },
-  {
-    id: 'entradas', curto: 'Pizza rolls e crostini', titulo: 'Pizza rolls e crostini',
-    grupos: [
-      {
-        titulo: 'Pizza rolls', nota: 'Porção com 8 unidades.', colunas: [],
-        dados: `
-Atum|Atum em pedaços com cream cheese, alho-poró e parmesão|59,90
-Calabresa Moída com Mussarela|Calabresa moída com mussarela, parmesão e Catupiry|49,90
-Goiabada com Catupiry|Goiabada com Catupiry|49,90
-Queijo Brie com Mel|Queijo brie com mel|59,90
-Romeu e Julieta|Goiabada com mussarela|54,90
-`
-      },
-      {
-        titulo: 'Crostini', colunas: [],
-        dados: `
-Crostini de Parmesão com Alecrim e Manjericão|Acompanha molho Don Miguelito|37,90
 `
       }
     ]
