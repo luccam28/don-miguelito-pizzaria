@@ -1,7 +1,7 @@
 /*
   Cardápio digital — Don Miguelito Pizzaria
   Fonte: cardapio.pdf enviado pelo cliente. Para atualizar um preço, edite a linha correspondente.
-  Formato de cada linha:  Nome | Descrição | preço da 1ª coluna | preço da 2ª coluna
+  Formato de cada linha:  Nome | Descrição | preço da 1ª coluna (Broto) | preço da 2ª coluna (Grande)
   Deixe o preço vazio quando o item não existe naquele tamanho. Texto livre (ex.: Consulte) também é aceito.
 */
 window.CARDAPIO = [
@@ -323,9 +323,12 @@ Schweppes Tônica||8,90
 Soda Italiana||14,90
 `
       },
-      { titulo: 'Energético', colunas: [], dados: `
+      {
+        titulo: 'Energéticos', colunas: [],
+        dados: `
 Red Bull||20,00
-` },
+`
+      },
       {
         titulo: 'Sucos naturais', colunas: ['Copo 330 ml', 'Jarra 750 ml'],
         dados: `
@@ -395,9 +398,8 @@ Vinho Donatella Lambrusco||119,00
 Vinho Espanhola (taça)||35,00
 Vinho Família Pereira branco suave tradicional||55,00
 Vinho Família Pereira tinto seco tradicional||59,00
-Vinho Família Pereira tinto suave tradicional||35,00
-Vinho Freixenet Chianti Italiano||179,00
-Vinho Freixenet Primitivo Italiano||169,90
+Vinho Freixenet Chianti Italiano||35,00
+Vinho Freixenet Primitivo Italiano||179,00
 Vinho Ma Chérie branco suave||79,00
 Vinho seco Adega Patrício 750 ml||39,90
 Vinho São Miguel do Sul (português)||110,00
