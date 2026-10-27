@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Troque [INSERIR DOMÍNIO] pelo domínio real antes de publicar. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://[INSERIR DOMÍNIO]/</loc></url>
+  <url><loc>https://[INSERIR DOMÍNIO]/politica-de-privacidade.html</loc></url>
+  <url><loc>https://[INSERIR DOMÍNIO]/termos-de-uso.html</loc></url>
+  <url><loc>https://[INSERIR DOMÍNIO]/politica-de-cookies.html</loc></url>
+  <url><loc>https://[INSERIR DOMÍNIO]/lgpd.html</loc></url>
+</urlset>

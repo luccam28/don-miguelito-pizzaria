@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<!--
+  Projeto desenvolvido por REDESIGNER PPM (redesigner.com.br)
+  Projeto: Don Miguelito Pizzaria — cardápio digital | Versão: 1.0.0
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Don Miguelito Pizzaria | Cardápio digital de pizza napolitana na Vila Granada, São Paulo</title>
+  <meta name="description" content="Cardápio digital da Don Miguelito Pizzaria: pizzas napolitanas de massa de longa fermentação, esfihas, calzones, hambúrgueres e bebidas. R. Barbosa de Campos, 327, Vila Granada, São Paulo.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#020a1c">
+  <!-- CANONICAL: depois de publicar, descomente e troque pelo endereço real do site.
+  <link rel="canonical" href="https://[INSERIR DOMÍNIO]/"> -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preload" as="image" href="fundo.webp" type="image/webp">
+  <link rel="stylesheet" href="style.css">
+
+  <meta property="og:type" content="restaurant.restaurant">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Don Miguelito Pizzaria">
+  <meta property="og:title" content="Don Miguelito Pizzaria | Cardápio digital">
+  <meta property="og:description" content="Pizza napolitana de massa de longa fermentação, esfihas, calzones, hambúrgueres e bebidas. Veja o cardápio e peça pelo WhatsApp.">
+  <meta property="og:image" content="https://[INSERIR DOMÍNIO]/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://[INSERIR DOMÍNIO]/">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Don Miguelito Pizzaria",
+    "alternateName": "Dom Miguelito",
+    "description": "Pizzaria napolitana com massa de longa fermentação, esfihas, calzones, hambúrgueres e bebidas.",
+    "servesCuisine": "Pizza",
+    "image": "logo.jpeg",
+    "telephone": "+55 11 96421-9625",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "R. Barbosa de Campos, 327",
+      "addressLocality": "São Paulo",
+      "addressRegion": "SP",
+      "postalCode": "03622-020",
+      "addressCountry": "BR"
+    },
+    "hasMenu": { "@type": "Menu", "name": "Cardápio digital" },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday"], "opens": "11:00", "closes": "15:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday"], "opens": "17:00", "closes": "23:30" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday"], "opens": "11:00", "closes": "15:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday"], "opens": "17:00", "closes": "00:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "11:00", "closes": "15:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "17:00", "closes": "23:45" }
+    ]
+  }
+  </script>
+
+  <script src="cardapio-dados.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="header">
+    <div class="wrap header__in">
+      <a class="brand" href="index.html" aria-label="Don Miguelito Pizzaria, início">
+        <picture>
+          <source type="image/webp" srcset="logo.webp">
+          <img src="logo.jpeg" width="447" height="447" alt="Logo da Don Miguelito Pizzaria">
+        </picture>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu"><span></span></button>
+      <nav class="nav" id="menu-principal" aria-label="Principal">
+        <a href="#cardapio">Cardápio</a>
+        <a href="#info">Horários</a>
+        <a href="#info">Como chegar</a>
+        <span class="status" data-status role="status">Confira os horários</span>
+        <a class="btn btn--wa js-wa" href="https://wa.me/5511964219625" data-evento="whatsapp_cabecalho">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"></use></svg>
+          WhatsApp
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" id="topo" aria-labelledby="t-hero">
+      <div class="wrap hero__in">
+        <div class="hero__txt">
+          <h1 id="t-hero">Pizza napolitana de massa de longa fermentação</h1>
+          <span class="fio" aria-hidden="true"></span>
+          <p class="hero__lead">Escolha no cardápio digital da Don Miguelito, com pizzas, esfihas, calzones, hambúrgueres e bebidas, e faça seu pedido pelo WhatsApp.</p>
+          <p class="status" data-status role="status">Confira os horários</p>
+          <div class="hero__acoes">
+            <a class="btn btn--wa js-wa" href="https://wa.me/5511964219625" data-evento="whatsapp_hero">
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"></use></svg>
+              Pedir pelo WhatsApp
+            </a>
+            <a class="btn btn--ghost" href="#cardapio" data-evento="ver_cardapio">Ver o cardápio</a>
+            <a class="btn btn--ghost" href="don-miguelito-cardapio.pdf" download data-evento="download_pdf">Baixar em PDF</a>
+          </div>
+        </div>
+        <div class="hero__media">
+          <picture>
+            <source type="image/webp" srcset="capa.webp">
+            <img src="capa.jpg" width="1024" height="1536" fetchpriority="high"
+                 alt="Pizza napolitana de borda alta e dourada, com mussarela e folhas de manjericão sobre uma tábua de madeira">
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section id="cardapio" aria-labelledby="t-cardapio">
+      <div class="wrap">
+        <h2 class="titulo" id="t-cardapio">Cardápio digital</h2>
+        <span class="fio" aria-hidden="true"></span>
+        <div class="busca" role="search">
+          <label for="busca">Procure um sabor ou ingrediente</label>
+          <input id="busca" type="search" placeholder="Ex.: calabresa, brie, Nutella" autocomplete="off" enterkeyhint="search">
+          <p class="busca__info" id="busca-info" role="status"></p>
+        </div>
+      </div>
+      <nav class="chips" id="chips" aria-label="Categorias do cardápio"><ul></ul></nav>
+      <div class="wrap" id="cardapio-lista">
+        <noscript><p class="vazio">O cardápio digital precisa de JavaScript. Você pode ver tudo no <a href="don-miguelito-cardapio.pdf">cardápio em PDF</a>.</p></noscript>
+      </div>
+    </section>
+
+    <section class="secao" id="info" aria-labelledby="t-info">
+      <div class="wrap info__in">
+        <div class="info__bloco">
+          <h2 class="titulo" id="t-info">Horários</h2>
+          <span class="fio" aria-hidden="true"></span>
+          <dl class="horarios">
+            <div><dt>Terça a quinta</dt><dd>11h às 15h e 17h às 23h30</dd></div>
+            <div><dt>Sexta e sábado</dt><dd>11h às 15h e 17h à meia-noite</dd></div>
+            <div><dt>Domingo</dt><dd>11h às 15h e 17h às 23h45</dd></div>
+            <div><dt>Segunda</dt><dd>Confirme pelo WhatsApp</dd></div>
+          </dl>
+          <p class="nota-pequena">Em feriados, confirme o horário pelo WhatsApp.</p>
+        </div>
+        <div class="info__bloco">
+          <h2 class="titulo">Como chegar</h2>
+          <span class="fio" aria-hidden="true"></span>
+          <address class="endereco">R. Barbosa de Campos, 327<br>Vila Granada, São Paulo – SP<br>CEP 03622-020</address>
+          <div class="info__acoes">
+            <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&amp;query=R.%20Barbosa%20de%20Campos%2C%20327%20-%20Vila%20Granada%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2003622-020" target="_blank" rel="noopener noreferrer" data-evento="clique_mapa">Abrir no Google Maps</a>
+            <a class="btn btn--ghost" href="https://waze.com/ul?q=R.%20Barbosa%20de%20Campos%2C%20327%20-%20Vila%20Granada%2C%20S%C3%A3o%20Paulo&amp;navigate=yes" target="_blank" rel="noopener noreferrer" data-evento="clique_waze">Abrir no Waze</a>
+            <a class="btn btn--ghost" href="tel:+5511964219625" data-evento="clique_telefone">Ligar (11) 96421-9625</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__in">
+      <div class="footer__col">
+        <h2 class="footer__tit">Onde estamos</h2>
+        <address class="footer__endereco">
+          Don Miguelito Pizzaria<br>
+          R. Barbosa de Campos, 327<br>
+          Vila Granada, São Paulo – SP<br>
+          CEP 03622-020
+        </address>
+        <p class="footer__contato"><a href="https://wa.me/5511964219625" target="_blank" rel="noopener noreferrer" data-evento="whatsapp_footer">(11) 96421-9625</a></p>
+      </div>
+      <div class="footer__col">
+        <h2 class="footer__tit">Informações</h2>
+        <nav class="footer__links" aria-label="Informações legais">
+          <a href="politica-de-privacidade.html">Política de Privacidade</a>
+          <a href="termos-de-uso.html">Termos de Uso</a>
+          <a href="politica-de-cookies.html">Política de Cookies</a>
+          <a href="lgpd.html">LGPD e tratamento de dados</a>
+          <button type="button" data-abrir-cookies>Preferências de cookies</button>
+        </nav>
+      </div>
+      <p class="footer__credito">© 2026 - PIZZARIA DOM MIGUELITO LTDA - ME - CNPJ 35.808.636/0001-49 - DESENVOLVIDO por <a href="https://redesigner.com.br" target="_blank" rel="noopener noreferrer">REDESIGNER PPM</a></p>
+    </div>
+  </footer>
+</body>
+</html>
