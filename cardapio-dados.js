@@ -40,7 +40,7 @@ Calzone Vegetariana|Milho, palmito, ervilha, brócolis, tomate-cereja e mussarel
   },
   {
     id: 'pizzas-salgadas', curto: 'Pizzas salgadas', titulo: 'Pizzas salgadas',
-    intro: 'Todas em dois tamanhos: broto e grande. Alguns sabores existem só no broto.',
+    intro: '',
     grupos: [{
       colunas: ['Broto', 'Grande'],
       dados: `
@@ -117,7 +117,7 @@ Vegetariana|Brócolis, palmito, ervilha fresca, milho, tomate-cereja e mussarela
   },
   {
     id: 'bordas', curto: 'Bordas e adicionais', titulo: 'Bordas e adicionais',
-    intro: 'Capriche na borda ou turbine o sabor com um adicional.',
+    intro: '',
     grupos: [
       {
         titulo: 'Bordas das pizzas salgadas', colunas: ['Broto', 'Grande'],
@@ -165,7 +165,7 @@ Borda Vulcão de Chocolate||20,00|40,00
   },
   {
     id: 'pizzas-doces', curto: 'Pizzas doces', titulo: 'Pizzas doces',
-    intro: 'Também em broto e grande.',
+    intro: '',
     grupos: [{
       colunas: ['Broto', 'Grande'],
       dados: `
@@ -194,7 +194,7 @@ Sensação|Chocolate e morango|54,90|65,90
   },
   {
     id: 'esfihas', curto: 'Esfihas', titulo: 'Esfihas',
-    intro: 'Tamanho de 12 cm. Até 20 itens por pedido.',
+    intro: '',
     grupos: [
       {
         titulo: 'Esfihas salgadas', colunas: [],
@@ -269,7 +269,7 @@ Prestígio||17,90
   },
   {
     id: 'hamburgueres', curto: 'Hambúrgueres', titulo: 'Hambúrgueres',
-    intro: 'Até 10 itens por pedido.',
+    intro: '',
     grupos: [{
       colunas: [],
       dados: `
