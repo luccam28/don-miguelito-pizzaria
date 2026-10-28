@@ -407,9 +407,12 @@ Vinho suave Adega Patrício 750 ml||39,90
     id: 'sobremesas', curto: 'Sobremesas', titulo: 'Sobremesas',
     grupos: [{
       colunas: [],
+      nota: '* Estes itens são servidos exclusivamente no salão da pizzaria (não disponíveis para entrega).',
       dados: `
 Cone de Chocolate||10,00
+Cocada Flambada com Sorvete*||
 Pudim de Leite Condensado||9,90
+Petit Gâteau*||
 Trufas||5,00
 `
     }]
