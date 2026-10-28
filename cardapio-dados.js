@@ -84,7 +84,7 @@ Don Zeca|Atum, cream cheese, alho-poró, parmesão e tomate seco|77,90|120,90
 Dois Queijos|Mussarela e Catupiry|52,90|74,90
 Donna Aline|Calabresa moída, cream cheese e parmesão|58,90|87,90
 Donna Gisleni|Brócolis, gergelim, alho frito e azeite português|44,90|
-Donna Jô|Molho Don Miguelito, mussarela, queijo brie e presunto parma|89,90|117,90
+Donna Jô|Mussarela, queijo brie e presunto parma|89,90|117,90
 Donna Terezinha|Peito de peru, Catupiry, palmito e mussarela|62,90|98,90
 Dr. Anderson Lafuza|Mussarela de búfala, presunto, tomate e orégano|59,90|90,90
 Escarola|Escarola refogada, mussarela e bacon|46,90|70,90
@@ -94,10 +94,10 @@ Frango do Chef Amós|Frango, bacon e mussarela|59,90|77,90
 Italiana|Escarola refogada, calabresa moída, palmito, cebola roxa e mussarela|56,90|81,90
 Lombo com Abacaxi|Lombo canadense, mussarela, Catupiry e abacaxi|70,90|108,90
 Marguerita|Mussarela, parmesão, tomate em rodelas e manjericão|50,90|69,90
-Marguerita do Chef Amós|Exagero de molho Don Miguelito, mussarela de búfala, tomate-cereja e manjericão|55,90|80,90
+Marguerita do Chef Amós|Mussarela de búfala, tomate-cereja e manjericão|55,90|80,90
 Mussarela|Mussarela (no broto, também com azeitona)|42,90|54,90
 Mussarela de Búfala|Mussarela de búfala|46,90|
-Napolitana do Chef Amós|Exagero de molho Don Miguelito, alho fresco, azeite português, parmesão e manjericão|50,90|74,90
+Napolitana do Chef Amós|Alho fresco, azeite português, parmesão e manjericão|50,90|74,90
 Palmito com Catupiry|Palmito e Catupiry|67,90|98,90
 Palmito com Mussarela|Palmito e mussarela|70,90|97,90
 Pepperoni|Mussarela, pepperoni e parmesão|71,90|104,90
