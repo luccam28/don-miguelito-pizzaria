@@ -1,8 +1,7 @@
 /*
   Cardápio digital — Don Miguelito Pizzaria
-  Fonte: cardapio.pdf enviado pelo cliente. Para atualizar um preço, edite a linha correspondente.
-  Formato de cada linha:  Nome | Descrição | preço da 1ª coluna (Broto) | preço da 2ª coluna (Grande)
-  Deixe o preço vazio quando o item não existe naquele tamanho. Texto livre (ex.: Consulte) também é aceito.
+  Fonte: cardapio.pdf enviado pelo cliente. 
+  As bordas e itens com valores idênticos foram agrupados para refletir a diagramação exata do PDF.
 */
 window.CARDAPIO = [
   {
@@ -46,7 +45,7 @@ Calzone Vegetariana|Milho, palmito, ervilha, brócolis, tomate-cereja e mussarel
       colunas: ['Broto', 'Grande'],
       dados: `
 Abobrinha (Zucchini)|Abobrinha, mussarela, parmesão e alho frito|47,90|84,90
-Abobrinha do Chef|Massa de longa fermentação, molho especial Don Miguelito, cream cheese e abobrinha no alho|55,90|81,90
+Abobrinha do Chef|Cream Cheese e Abobrinha com Alho|55,90|81,90
 Alho|Mussarela e alho frito|46,90|59,90
 Amatriciana|Pancetta, cebola roxa, tomate-cereja, alecrim e parmesão|54,90|76,90
 Atum|Atum e cebola roxa|39,90|92,90
@@ -67,15 +66,15 @@ Carne Seca com Mussarela|Carne seca, cebola roxa e mussarela|64,90|92,90
 Catumilho|Milho e Catupiry|47,90|59,90
 Cinco Queijos|Mussarela, Catupiry, gorgonzola, provolone e parmesão|76,90|103,90
 Colonial|Presunto, champignon, bacon, Catupiry e parmesão|64,90|103,90
-Don Alex|Molho Don Miguelito, cream cheese e pepperoni|67,60|103,90
+Don Alex|Cream Cheese e Pepperoni|67,60|103,90
 Don Cândido|Calabresa moída, ovo, parmesão, pimenta e cebola roxa|68,90|76,90
 Don Carlos Kubo|Atum, tomate em rodelas, cebola roxa, provolone e parmesão|76,90|108,90
 Don Corsito|Caponata de berinjela com mussarela e gorgonzola|81,90|92,90
 Don Diego|Lombo, bacon, mussarela e Catupiry|75,90|113,90
 Don Fernando|Atum, pepperoni, cebola roxa e mussarela|76,90|109,90
 Don Levicius|Calabresa fatiada, cebola roxa e Catupiry|64,90|67,90
-Don Lucca|Molho de tomate, champignon, mussarela, palmito, Catupiry e parmesão|73,90|
-Don Luigi|Massa de longa fermentação, molho Don Miguelito, mussarela, gorgonzola, queijo brie e geleia|80,00|117,90
+Don Lucca|Champignon, Mussarela, Palmito, Catupiry e Parmesan|73,90|
+Don Luigi|Mussarela, Gorgonzola, Queijo Brie e Geléia|80,00|117,90
 Don Marcos|Cream cheese, salmão, cebola roxa e rúcula|89,90|139,90
 Don Miguelito|Frango desfiado, parmesão e Catupiry|54,90|98,90
 Don Riva|Palmito, mussarela e Catupiry|59,90|102,90
@@ -123,14 +122,11 @@ Vegetariana|Brócolis, palmito, ervilha fresca, milho, tomate-cereja e mussarela
       {
         titulo: 'Bordas das pizzas salgadas', colunas: ['Broto', 'Grande'],
         dados: `
-Borda Catupiry|||20,00
-Borda Cheddar|||20,00
+Borda Catupiry e Cheddar|||20,00
 Borda de Chocolate||15,00|20,00
 Borda de Gergelim||5,90|7,90
 Borda Mussarela||25,00|25,00
-Borda Vulcão de Catupiry||30,00|45,00
-Borda Vulcão de Cheddar||30,00|45,00
-Borda Vulcão de Mussarela||30,00|45,00
+Borda Vulcão (Catupiry, Cheddar e Mussarela)||30,00|45,00
 `
       },
       {
@@ -159,12 +155,10 @@ Tomate italiano|||10,00
         titulo: 'Bordas das pizzas doces', nota: 'Escolha 1 opção de borda.', colunas: ['Broto', 'Grande'],
         dados: `
 Borda de Chocolate||15,00|20,00
-Borda de Gergelim|||6,00
-Borda Mussarela|||25,00
-Borda Vulcão de Catupiry|||30,00
-Borda Vulcão de Cheddar|||30,00
+Borda de Gergelim||6,00|6,00
+Borda Mussarela||25,00|25,00
+Borda Vulcão (Catupiry, Cheddar e Mussarela)||30,00|30,00
 Borda Vulcão de Chocolate||20,00|40,00
-Borda Vulcão de Mussarela|||30,00
 `
       }
     ]

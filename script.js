@@ -9,7 +9,7 @@
   const MSG_PEDIDO = 'Olá! Vim pelo cardápio digital da Don Miguelito e gostaria de fazer um pedido.';
   const MSG_DUVIDA = 'Olá! Vim pelo cardápio digital da Don Miguelito e tenho uma dúvida.';
 
-  const HORARIOS = (() => { // dia (0 = domingo) -> faixas [hIni, mIni, hFim, mFim]. Segunda: sem horário regular informado.
+  const HORARIOS = (() => {
     const ter_qui = [[11, 0, 15, 0], [17, 0, 23, 30]];
     const sex_sab = [[11, 0, 15, 0], [17, 0, 24, 0]];
     return { 0: [[11, 0, 15, 0], [17, 0, 23, 45]], 2: ter_qui, 3: ter_qui, 4: ter_qui, 5: sex_sab, 6: sex_sab };
@@ -44,7 +44,6 @@
   };
 
   const carregarAnalitico = () => {
-    // Só carrega com consentimento e com ID real configurado. Nunca inventamos IDs.
     if (analiticoCarregado || !/^G-[A-Z0-9]+$/.test(GA_ID)) return;
     analiticoCarregado = true;
     window.dataLayer = window.dataLayer || [];
@@ -55,7 +54,6 @@
     s.async = true;
     s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
     document.head.append(s);
-    // Meta Pixel / GTM: [INSERIR ID REAL]. Carregar aqui apenas se consentimento.marketing for true.
   };
 
   const aplicarConsentimento = () => {
@@ -67,7 +65,7 @@
     const antes = lerConsentimento();
     try {
       localStorage.setItem(CHAVE_CONSENTIMENTO, JSON.stringify({ v: 1, estatisticas: !!estatisticas, marketing: !!marketing }));
-    } catch (e) { /* armazenamento indisponível: a escolha vale só nesta página */ }
+    } catch (e) { /* armazenamento indisponível */ }
     if (analiticoCarregado && antes && antes.estatisticas && !estatisticas) { location.reload(); return; }
     aplicarConsentimento();
     removerBanner();
@@ -78,7 +76,7 @@
     if (c && c.estatisticas && window.dataLayer) window.dataLayer.push(Object.assign({ event: evento }, dados));
   };
 
-  /* ---------- Diálogos acessíveis (elemento nativo <dialog>) ---------- */
+  /* ---------- Diálogos acessíveis ---------- */
   const criarDialog = (id, rotuloId, html) => {
     const d = document.createElement('dialog');
     d.id = id;
@@ -171,7 +169,7 @@
       '<p>Este site guarda no seu navegador apenas a sua escolha de privacidade. Ferramentas de estatística ou marketing, se forem usadas, só rodam com a sua permissão. Veja a <a href="politica-de-cookies.html">Política de Cookies</a>.</p></div>' +
       '<div class="banner__acoes">' +
       '<button class="btn btn--ghost" type="button" data-ck="rejeitar">Rejeitar não essenciais</button>' +
-      '<button class="btn btn--ghost" type="button" data-ck="aceitar">Aceitar não essenciais</button>' +
+      '<button class="btn btn--ghost" type="button" data-ck="aceitar">Aceitar</button>' +
       '<button class="btn btn--ghost" type="button" data-ck="personalizar">Personalizar</button></div></div>';
     b.addEventListener('click', (e) => {
       const btn = e.target.closest('[data-ck]');
@@ -188,7 +186,7 @@
   aplicarConsentimento();
   if (!lerConsentimento() && temDialog) mostrarBanner();
 
-  /* ---------- Cliques delegados: WhatsApp, preferências e eventos ---------- */
+  /* ---------- Cliques delegados ---------- */
   document.addEventListener('click', (e) => {
     const wa = e.target.closest('a.js-wa');
     if (wa && temDialog && !e.metaKey && !e.ctrlKey && !e.shiftKey) {
@@ -282,7 +280,10 @@
       const bloco = criar('div', 'grupo');
       if (grupo.titulo) bloco.append(criar('h4', 'grupo__tit', grupo.titulo));
       if (grupo.nota) bloco.append(criar('p', 'grupo__nota', grupo.nota));
+      
+      // O container ul agora possui a classe .itens, que no CSS suporta o grid de 2 colunas.
       const ul = criar('ul', 'itens');
+      
       grupo.dados.trim().split('\n').forEach((linha) => {
         const [nome, desc = '', ...precos] = linha.split('|').map((s) => s.trim());
         const li = criar('li', 'item');
@@ -334,6 +335,7 @@
 
     const pdf = criar('p', 'nota-pequena');
     pdf.style.marginTop = '2.5rem';
+    pdf.style.gridColumn = '1 / -1'; // Garante que o texto do PDF ocupe a largura toda
     const linkPdf = criar('a', null, 'Prefere o cardápio em PDF? Baixe aqui.');
     linkPdf.href = 'don-miguelito-cardapio.pdf';
     linkPdf.setAttribute('download', '');

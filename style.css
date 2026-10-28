@@ -53,8 +53,6 @@ body {
   font: var(--text-base) / 1.6 var(--font-sans);
   text-rendering: optimizeLegibility;
 }
-/* O fundo.jpg cobre o site inteiro e fica parado enquanto o conteúdo rola.
-   Pseudo-elemento fixo (e não background-attachment: fixed) porque este último falha no iOS. */
 body::before {
   content: "";
   position: fixed;
@@ -73,7 +71,7 @@ ul { padding: 0; list-style: none; }
 a { color: inherit; }
 button, input { font: inherit; color: inherit; }
 button { cursor: pointer; }
-[hidden] { display: none !important; } /* exceção deliberada: garante que hidden vença display de componentes */
+[hidden] { display: none !important; }
 
 :focus-visible {
   outline: 3px solid var(--gold);
@@ -95,7 +93,6 @@ button { cursor: pointer; }
 .wrap { width: min(100% - 2rem, var(--wrap)); margin-inline: auto; }
 .secao { padding-block: var(--space-6); }
 
-/* Fio tricolor (verde, branco, vermelho): vem da capa e marca onde um título termina */
 .fio {
   display: block; width: 5.5rem; height: 3px; margin-top: var(--space-3); border: 0;
   background: linear-gradient(90deg, var(--green) 0 33.3%, var(--cream) 33.3% 66.6%, var(--red) 66.6% 100%);
@@ -230,6 +227,13 @@ button { cursor: pointer; }
 .grupo__nota { margin-top: var(--space-2); font-size: var(--text-sm); color: var(--cream-dim); }
 .aviso-alcool { margin-top: var(--space-4); font-size: var(--text-sm); color: var(--cream-dim); border-left: 3px solid var(--red); padding-left: var(--space-3); }
 
+/* Lista de itens (agora com suporte a 2 colunas em telas maiores) */
+.itens {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0 2rem; /* Espaçamento horizontal entre as colunas */
+}
+
 .item {
   display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .2rem var(--space-3); align-items: baseline;
   padding-block: .9rem; border-bottom: 1px dashed var(--line);
@@ -259,7 +263,11 @@ button { cursor: pointer; }
   background: var(--panel);
   padding-block: var(--space-5) calc(var(--space-5) + 4.5rem + env(safe-area-inset-bottom, 0px));
 }
-.footer__in { display: grid; grid-template-columns: 1fr; gap: var(--space-5); }
+.footer__in { 
+  display: grid; 
+  grid-template-columns: 1fr; 
+  gap: var(--space-5); 
+}
 .footer__col { display: grid; gap: var(--space-3); align-content: start; }
 
 .footer__tit {
@@ -285,6 +293,37 @@ button { cursor: pointer; }
 }
 .footer__contato a:hover { color: var(--gold); border-color: var(--cream); }
 
+/* Redes Sociais */
+.footer__redes {
+  display: flex;
+  gap: var(--space-3);
+}
+.footer__redes a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: rgba(217, 180, 108, 0.1);
+  color: var(--cream);
+  transition: background-color 0.2s, color 0.2s;
+}
+.footer__redes a:hover {
+  background: var(--gold);
+  color: var(--navy-950);
+}
+
+/* Pagamentos */
+.footer__pagamentos {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  font-size: var(--text-sm);
+  color: var(--cream-dim);
+}
+
+/* Links legais */
 .footer__links { display: flex; flex-direction: column; gap: .25rem; }
 .footer__links a,
 .footer__links button {
@@ -371,6 +410,7 @@ dialog p { margin-top: var(--space-3); color: var(--cream-dim); font-size: var(-
   .banner__in { grid-template-columns: 1fr; }
   .footer__in { grid-template-columns: 1fr 1fr; column-gap: var(--space-6); }
 }
+
 @media (min-width: 56rem) {
   :root { --header-h: 4.5rem; }
   .brand img { width: 3.4rem; height: 3.4rem; }
@@ -387,7 +427,19 @@ dialog p { margin-top: var(--space-3); color: var(--cream-dim); font-size: var(-
   .item { padding-block: 1rem; }
   .banner__in { grid-template-columns: 1fr auto; align-items: center; }
   .legal { padding: var(--space-5); }
+  
+  /* Layout de 2 colunas para os itens do cardápio */
+  .itens {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  /* Rodapé com 3 colunas em desktop */
+  .footer__in { 
+    grid-template-columns: 1fr 1fr 1fr; 
+    column-gap: var(--space-6); 
+  }
 }
+
 @media (min-width: 90rem) {
   :root { --wrap: 80rem; }
 }
