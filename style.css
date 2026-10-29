@@ -33,7 +33,7 @@
 
   --radius: .75rem;
   --wrap: 72rem;
-  --header-h: 4rem;
+  --header-h: 5rem; /* Aumentado para acomodar o menu no mobile */
   --chips-h: 3.5rem;
   --banner-h: 0px;
 }
@@ -127,13 +127,34 @@ button { cursor: pointer; }
   position: sticky; top: 0; z-index: 60;
   background: var(--panel); border-bottom: 1px solid var(--line);
   padding-top: env(safe-area-inset-top, 0px);
+  overflow: visible; /* Permite que a logo "vaze" para baixo sem empurrar o header */
 }
 @supports (backdrop-filter: blur(6px)) {
   .header { backdrop-filter: blur(8px); }
 }
-.header__in { display: flex; align-items: center; gap: var(--space-3); min-height: var(--header-h); }
-.brand { display: flex; align-items: center; margin-right: auto; border-radius: 50%; }
-.brand img { width: 3rem; height: 3rem; border-radius: 50%; }
+.header__in { 
+  display: flex; 
+  align-items: center; 
+  gap: var(--space-3); 
+  min-height: var(--header-h); 
+}
+
+/* LOGO AJUSTADA: Aumentada visualmente sem alterar a altura do cabeçalho */
+.brand { 
+  display: flex; 
+  align-items: center; 
+  margin-right: auto; 
+  height: 100%;
+  position: relative;
+  z-index: 65; /* Fica acima do conteúdo do Hero */
+}
+.brand img { 
+  height: calc(var(--header-h) + 1.5rem); /* Ex: 5rem + 1.5rem = 6.5rem no mobile */
+  width: auto; 
+  max-width: none;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); /* Sombra para dar destaque */
+}
+
 .nav-toggle {
   display: inline-flex; align-items: center; justify-content: center;
   width: 2.75rem; height: 2.75rem; padding: 0;
@@ -227,11 +248,10 @@ button { cursor: pointer; }
 .grupo__nota { margin-top: var(--space-2); font-size: var(--text-sm); color: var(--cream-dim); }
 .aviso-alcool { margin-top: var(--space-4); font-size: var(--text-sm); color: var(--cream-dim); border-left: 3px solid var(--red); padding-left: var(--space-3); }
 
-/* Lista de itens (agora com suporte a 2 colunas em telas maiores) */
 .itens {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0 2rem; /* Espaçamento horizontal entre as colunas */
+  gap: 0 2rem;
 }
 
 .item {
@@ -293,7 +313,6 @@ button { cursor: pointer; }
 }
 .footer__contato a:hover { color: var(--gold); border-color: var(--cream); }
 
-/* Redes Sociais */
 .footer__redes {
   display: flex;
   gap: var(--space-3);
@@ -314,7 +333,6 @@ button { cursor: pointer; }
   color: var(--navy-950);
 }
 
-/* Pagamentos */
 .footer__pagamentos {
   display: flex;
   flex-direction: column;
@@ -323,7 +341,6 @@ button { cursor: pointer; }
   color: var(--cream-dim);
 }
 
-/* Links legais */
 .footer__links { display: flex; flex-direction: column; gap: .25rem; }
 .footer__links a,
 .footer__links button {
@@ -412,8 +429,10 @@ dialog p { margin-top: var(--space-3); color: var(--cream-dim); font-size: var(-
 }
 
 @media (min-width: 56rem) {
-  :root { --header-h: 4.5rem; }
-  .brand img { width: 3.4rem; height: 3.4rem; }
+  :root { --header-h: 6rem; } /* Header mais alto no desktop */
+  .brand img { 
+    height: calc(var(--header-h) + 2rem); /* Ex: 6rem + 2rem = 8rem no desktop */
+  }
   .nav-toggle { display: none; }
   .nav {
     position: static; display: flex; flex-direction: row; align-items: center; gap: var(--space-4);
