@@ -33,7 +33,7 @@
 
   --radius: .75rem;
   --wrap: 72rem;
-  --header-h: 5rem; /* Aumentado para acomodar o menu no mobile */
+  --header-h: 4rem; /* Altura compacta do header no mobile */
   --chips-h: 3.5rem;
   --banner-h: 0px;
 }
@@ -139,20 +139,21 @@ button { cursor: pointer; }
   min-height: var(--header-h); 
 }
 
-/* LOGO AJUSTADA: Aumentada visualmente sem alterar a altura do cabeçalho */
+/* LOGO AJUSTADA: Fica grande, mas "vaza" sem aumentar o header */
 .brand { 
   display: flex; 
   align-items: center; 
   margin-right: auto; 
   height: 100%;
   position: relative;
-  z-index: 65; /* Fica acima do conteúdo do Hero */
+  z-index: 65;
 }
 .brand img { 
-  height: calc(var(--header-h) + 1.5rem); /* Ex: 5rem + 1.5rem = 6.5rem no mobile */
+  height: calc(var(--header-h) + 1.5rem); /* A imagem é maior que o header */
   width: auto; 
   max-width: none;
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); /* Sombra para dar destaque */
+  margin-block: -0.75rem; /* Puxa a imagem para cima e para baixo para não esticar o header */
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
 }
 
 .nav-toggle {
@@ -429,9 +430,10 @@ dialog p { margin-top: var(--space-3); color: var(--cream-dim); font-size: var(-
 }
 
 @media (min-width: 56rem) {
-  :root { --header-h: 6rem; } /* Header mais alto no desktop */
+  :root { --header-h: 4.5rem; } /* Altura compacta no desktop */
   .brand img { 
-    height: calc(var(--header-h) + 2rem); /* Ex: 6rem + 2rem = 8rem no desktop */
+    height: calc(var(--header-h) + 2rem); /* Logo maior */
+    margin-block: -1rem; /* Compensa o tamanho extra */
   }
   .nav-toggle { display: none; }
   .nav {
