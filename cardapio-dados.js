@@ -50,7 +50,6 @@ Alho|Mussarela e alho frito|46,90|59,90
 Amatriciana|Pancetta, cebola roxa, tomate-cereja, alecrim e parmesão|54,90|76,90
 Atum|Atum e cebola roxa|39,90|92,90
 Atum com Mussarela|Atum e mussarela|59,90|96,90
-Bacalhau do Don Miguelito|Bacalhau com mussarela e Catupiry|89,90|
 Bacon|Mussarela e bacon|52,90|63,90
 Baiana|Calabresa moída, molho de pimenta, ovos, cebola roxa e mussarela|54,90|59,90
 Bauru|Presunto, mussarela, orégano e tomates italianos|52,90|63,90
@@ -73,17 +72,15 @@ Don Corsito|Caponata de berinjela com mussarela e gorgonzola|81,90|92,90
 Don Diego|Lombo, bacon, mussarela e Catupiry|75,90|113,90
 Don Fernando|Atum, pepperoni, cebola roxa e mussarela|76,90|109,90
 Don Levicius|Calabresa fatiada, cebola roxa e Catupiry|64,90|67,90
-Don Lucca|Champignon, Mussarela, Palmito, Catupiry e Parmesan|73,90|
 Don Luigi|Mussarela, Gorgonzola, Queijo Brie e Geléia|80,00|117,90
 Don Marcos|Cream cheese, salmão, cebola roxa e rúcula|89,90|139,90
 Don Miguelito|Frango desfiado, parmesão e Catupiry|54,90|98,90
 Don Riva|Palmito, mussarela e Catupiry|59,90|102,90
-Don Roberto|Frango, mussarela e alho frito|54,90|
 Don Thallito|Mussarela, frango, cheddar, bacon e Doritos|67,90|103,90
 Don Zeca|Atum, cream cheese, alho-poró, parmesão e tomate seco|77,90|120,90
 Dois Queijos|Mussarela e Catupiry|52,90|74,90
 Donna Aline|Calabresa moída, cream cheese e parmesão|58,90|87,90
-Donna Gisleni|Brócolis, gergelim, alho frito e azeite português|44,90|
+Donna Gisleni|Brócolis, gergelim, alho frito e azeite português|44,90|59,90
 Donna Jô|Mussarela, queijo brie e presunto parma|89,90|117,90
 Donna Terezinha|Peito de peru, Catupiry, palmito e mussarela|62,90|98,90
 Dr. Anderson Lafuza|Mussarela de búfala, presunto, tomate e orégano|59,90|90,90
@@ -96,7 +93,7 @@ Lombo com Abacaxi|Lombo canadense, mussarela, Catupiry e abacaxi|70,90|108,90
 Marguerita|Mussarela, parmesão, tomate em rodelas e manjericão|50,90|69,90
 Marguerita do Chef Amós|Mussarela de búfala, tomate-cereja e manjericão|55,90|80,90
 Mussarela|Mussarela (no broto, também com azeitona)|42,90|54,90
-Mussarela de Búfala|Mussarela de búfala|46,90|
+Mussarela de Búfala|Mussarela de búfala|46,90|69,90
 Napolitana do Chef Amós|Alho fresco, azeite português, parmesão e manjericão|50,90|74,90
 Palmito com Catupiry|Palmito e Catupiry|67,90|98,90
 Palmito com Mussarela|Palmito e mussarela|70,90|97,90
@@ -130,25 +127,25 @@ Borda Vulcão (Catupiry, Cheddar e Mussarela)||30,00|45,00
 `
       },
       {
-        titulo: 'Adicionais', colunas: ['Broto', 'Grande'],
+        titulo: 'Adicionais', colunas: [],
         dados: `
-Alho frito|||10,00
-Bacon|||15,00
-Calabresa|||15,00
-Camarão|||40,00
-Catupiry||10,00|20,00
-Cebola roxa|||10,00
-Cheddar||12,00|20,00
-Gorgonzola|||20,00
-Massa|||10,00
-Milho|||10,00
-Molho de tomate|||10,00
-Mussarela|||20,00
-Palmito|||25,00
-Parmesão|||20,00
-Pepperoni|||25,00
-Queijo brie|||25,00
-Tomate italiano|||10,00
+Alho frito||5,00
+Bacon||8,00
+Calabresa||8,00
+Camarão||30,00
+Catupiry||15,00
+Cebola roxa||5,00
+Cheddar||15,00
+Gorgonzola||15,00
+Massa||10,00
+Milho||5,00
+Molho de tomate||5,00
+Mussarela||15,00
+Palmito||15,00
+Parmesão||15,00
+Pepperoni||15,00
+Queijo brie||15,00
+Tomate italiano||5,00
 `
       },
       {
@@ -219,7 +216,7 @@ Carne Seca com Catupiry||13,90
 Carne Seca com Cebola||12,90
 Carne Seca com Mussarela||12,90
 Don Corsito|Caponata de berinjela com mussarela e gorgonzola|17,90
-Don Thalito||17,90
+Don Thallito||17,90
 Escarola com Mussarela||10,90
 Frango com Catupiry||11,90
 Frango com Mussarela||10,90
@@ -277,9 +274,24 @@ Burger Caprese|Hambúrguer de 180 g, mussarela de búfala, tomate-cereja, manjer
 Burger de Rúcula|Hambúrguer de 120 g com pasta de alho, tomate seco e queijo prato no pão brioche com gergelim. Acompanha fritas.|44,90
 Burger Don Luigi|Hambúrguer de 180 g, pesto de manjericão, mussarela, gorgonzola, queijo brie e geleia de pimenta no pão australiano. Acompanha fritas.|49,90
 Burger Don Marcos|Hambúrguer de salmão de 120 g com cream cheese, alho-poró, cebola roxa e rúcula no pão australiano. Acompanha fritas.|59,90
+Burger Duplo Bacon|Dois hambúrgueres de 100 g, queijo prato, cheddar, bacon e molho Miguelito no pão brioche. Acompanha fritas.|44,90
 Burger Duplo Miguelito|Dois hambúrgueres de 100 g, queijo prato, cheddar, molho Miguelito e salada no pão brioche. Acompanha fritas.|39,90
+X-Burguer Miguelito|Pão brioche com gergelim, hambúrguer de 100 g e queijo prato. Acompanha fritas.|29,90
+`
+    }]
+  },
+  {
+    id: 'porcoes', curto: 'Porções e Aperitivos', titulo: 'Porções e Aperitivos',
+    grupos: [{
+      colunas: [],
+      dados: `
+Batata Frita (300g)||19,90
+Dadinho de Tapioca (400g)||39,90
+Mandioca Frita (300g)||15,90
+Porção Anéis de Cebola (330g)||14,90
 Porção de Fritas|Batata frita com cheddar e bacon.|34,90
-X-Burguer Miguelito|Pão brioche com gergelim, hambúrguer de 100 g, queijo prato e fritas.|29,90
+Porção de Provolone à Milanesa|Cubos de provolone empanados e crocantes por fora, com aquele queijo derretido e irresistível por dentro. Perfeito para compartilhar!|49,90
+Porção de Queijos (parmesão, gorgonzola e provolone)|Uma deliciosa seleção de queijos parmesão, gorgonzola e provolone, perfeita para compartilhar e apreciar diferentes sabores e texturas em uma só porção.|49,90
 `
     }]
   },
@@ -407,12 +419,12 @@ Vinho suave Adega Patrício 750 ml||39,90
     id: 'sobremesas', curto: 'Sobremesas', titulo: 'Sobremesas',
     grupos: [{
       colunas: [],
-      nota: '* Estes itens são servidos exclusivamente no salão da pizzaria (não disponíveis para entrega).',
+      nota: '* Disponível somente para delivery.',
       dados: `
 Cone de Chocolate||10,00
-Cocada Flambada com Sorvete*||
+Cocada Supreme|Com sorvete de creme e calda de doce de leite|39,90
 Pudim de Leite Condensado||9,90
-Petit Gâteau*||
+Petit Gâteau*|Com sorvete de creme|24,90
 Trufas||5,00
 `
     }]
