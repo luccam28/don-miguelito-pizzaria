@@ -44,71 +44,71 @@ Calzone Vegetariana|Milho, palmito, ervilha, brócolis, tomate-cereja e mussarel
     grupos: [{
       colunas: ['Broto', 'Grande'],
       dados: `
-Abobrinha (Zucchini)|Abobrinha, mussarela, parmesão e alho frito|47,90|84,90
-Abobrinha do Chef|Cream Cheese e Abobrinha com Alho|55,90|81,90
-Alho|Mussarela e alho frito|46,90|59,90
-Amatriciana|Pancetta, cebola roxa, tomate-cereja, alecrim e parmesão|54,90|76,90
-Atum|Atum e cebola roxa|39,90|92,90
-Atum com Mussarela|Atum e mussarela|59,90|96,90
-Bacon|Mussarela e bacon|52,90|63,90
-Baiana|Calabresa moída, molho de pimenta, ovos, cebola roxa e mussarela|54,90|59,90
-Bauru|Presunto, mussarela, orégano e tomates italianos|52,90|63,90
-Brócolis|Brócolis, mussarela e alho frito|53,90|64,90
-Calabresa|Calabresa fatiada e cebola roxa|34,90|49,90
-Calabresa com Catupiry|Calabresa e Catupiry|39,90|64,90
-Camarão do Chef|Camarão temperado no alho em lâminas e azeite, cream cheese, alho-poró e cebola roxa|81,90|141,90
-Canadense|Lombo canadense, mussarela de búfala, palmito, bacon e rúcula|67,90|98,90
-Caprese|Mussarela de búfala, tomate-cereja, manjericão e patê de azeitona preta|61,90|91,90
-Caponata de Berinjela|Caponata de berinjela e mussarela|47,90|74,90
-Carne Seca com Catupiry|Carne seca e Catupiry|62,90|98,90
-Carne Seca com Mussarela|Carne seca, cebola roxa e mussarela|64,90|92,90
-Catumilho|Milho e Catupiry|47,90|59,90
-Cinco Queijos|Mussarela, Catupiry, gorgonzola, provolone e parmesão|76,90|103,90
-Colonial|Presunto, champignon, bacon, Catupiry e parmesão|64,90|103,90
-Don Alex|Cream Cheese e Pepperoni|67,60|103,90
-Don Cândido|Calabresa moída, ovo, parmesão, pimenta e cebola roxa|68,90|76,90
-Don Carlos Kubo|Atum, tomate em rodelas, cebola roxa, provolone e parmesão|76,90|108,90
-Don Corsito|Caponata de berinjela com mussarela e gorgonzola|81,90|92,90
-Don Diego|Lombo, bacon, mussarela e Catupiry|75,90|113,90
-Don Fernando|Atum, pepperoni, cebola roxa e mussarela|76,90|109,90
-Don Levicius|Calabresa fatiada, cebola roxa e Catupiry|64,90|67,90
-Don Luigi|Mussarela, Gorgonzola, Queijo Brie e Geléia|80,00|117,90
-Don Marcos|Cream cheese, salmão, cebola roxa e rúcula|89,90|139,90
-Don Miguelito|Frango desfiado, parmesão e Catupiry|54,90|98,90
-Don Riva|Palmito, mussarela e Catupiry|59,90|102,90
-Don Thallito|Mussarela, frango, cheddar, bacon e Doritos|67,90|103,90
-Don Zeca|Atum, cream cheese, alho-poró, parmesão e tomate seco|77,90|120,90
-Dois Queijos|Mussarela e Catupiry|52,90|74,90
-Donna Aline|Calabresa moída, cream cheese e parmesão|58,90|87,90
-Donna Gisleni|Brócolis, gergelim, alho frito e azeite português|44,90|59,90
-Donna Jô|Mussarela, queijo brie e presunto parma|89,90|117,90
-Donna Terezinha|Peito de peru, Catupiry, palmito e mussarela|62,90|98,90
-Dr. Anderson Lafuza|Mussarela de búfala, presunto, tomate e orégano|59,90|90,90
-Escarola|Escarola refogada, mussarela e bacon|46,90|70,90
-Frango com Catupiry|Frango e Catupiry|46,90|64,90
-Frango com Cheddar e Bacon|Frango, cheddar e bacon|59,90|88,90
-Frango do Chef Amós|Frango, bacon e mussarela|59,90|77,90
-Italiana|Escarola refogada, calabresa moída, palmito, cebola roxa e mussarela|56,90|81,90
-Lombo com Abacaxi|Lombo canadense, mussarela, Catupiry e abacaxi|70,90|108,90
-Marguerita|Mussarela, parmesão, tomate em rodelas e manjericão|50,90|69,90
-Marguerita do Chef Amós|Mussarela de búfala, tomate-cereja e manjericão|55,90|80,90
-Mussarela|Mussarela (no broto, também com azeitona)|42,90|54,90
-Mussarela de Búfala|Mussarela de búfala|46,90|69,90
-Napolitana do Chef Amós|Alho fresco, azeite português, parmesão e manjericão|50,90|74,90
-Palmito com Catupiry|Palmito e Catupiry|67,90|98,90
-Palmito com Mussarela|Palmito e mussarela|70,90|97,90
-Pepperoni|Mussarela, pepperoni e parmesão|71,90|104,90
-Pepperoni com Catupiry|Pepperoni e Catupiry|70,90|102,90
-Portuguesa|Presunto, ovo, ervilha fresca, cebola roxa e mussarela|50,90|69,90
-Primavera|Palmito, bacon, milho e mussarela|68,90|100,90
-Quatro Queijos|Mussarela, Catupiry, gorgonzola e provolone|63,90|92,90
-Romana Aliche|Mussarela, aliche e tomate|73,90|108,90
-Rúcula|Mussarela de búfala, rúcula e tomate seco|50,90|74,90
-Salmão com Camarão|Cream cheese, alho-poró, salmão, camarão, cebola roxa e rúcula|89,90|161,90
-Siciliana|Champignon, bacon e Catupiry|70,99|103,90
-Toscana|Calabresa e mussarela|50,90|63,90
-Três Queijos|Mussarela, Catupiry e parmesão|57,90|84,90
-Vegetariana|Brócolis, palmito, ervilha fresca, milho, tomate-cereja e mussarela|54,90|80,90
+Abobrinha (Zucchini)|Abobrinha, mussarela, parmesão e alho frito|61,50|101,90
+Abobrinha do Chef|Cream Cheese e Abobrinha com Alho|59,50|98,50
+Alho|Mussarela e alho frito|43,50|71,90
+Amatriciana|Pancetta, cebola roxa, tomate-cereja, alecrim e parmesão|55,50|92,50
+Atum|Atum e cebola roxa|66,90|111,50
+Atum com Mussarela|Atum e mussarela|69,90|116,50
+Bacon|Mussarela e bacon|46,50|76,90
+Baiana|Calabresa moída, molho de pimenta, ovos, cebola roxa e mussarela|43,50|71,90
+Bauru|Presunto, mussarela, orégano e tomates italianos|46,50|76,90
+Brócolis|Brócolis, mussarela e alho frito|46,90|77,90
+Calabresa|Calabresa fatiada e cebola roxa|36,50|59,90
+Calabresa com Catupiry|Calabresa e Catupiry|46,90|77,90
+Camarão do Chef|Camarão temperado no alho em lâminas e azeite, cream cheese, alho-poró e cebola roxa|102,50|170,50
+Canadense|Lombo canadense, mussarela de búfala, palmito, bacon e rúcula|71,50|118,90
+Caprese|Mussarela de búfala, tomate-cereja, manjericão e patê de azeitona preta|66,50|110,50
+Caponata de Berinjela|Caponata de berinjela e mussarela|54,50|89,90
+Carne Seca com Catupiry|Carne seca e Catupiry|71,50|118,90
+Carne Seca com Mussarela|Carne seca, cebola roxa e mussarela|66,90|111,50
+Catumilho|Milho e Catupiry|43,50|71,90
+Cinco Queijos|Mussarela, Catupiry, gorgonzola, provolone e parmesão|75,50|124,90
+Colonial|Presunto, champignon, bacon, Catupiry e parmesão|75,50|124,90
+Don Alex|Cream Cheese e Pepperoni|75,50|124,90
+Don Cândido|Calabresa moída, ovo, parmesão, pimenta e cebola roxa|55,50|92,50
+Don Carlos Kubo|Atum, tomate em rodelas, cebola roxa, provolone e parmesão|78,90|130,90
+Don Corsito|Caponata de berinjela com mussarela e gorgonzola|66,90|111,50
+Don Diego|Lombo, bacon, mussarela e Catupiry|82,50|136,90
+Don Fernando|Atum, pepperoni, cebola roxa e mussarela|79,50|131,90
+Don Levicius|Calabresa fatiada, cebola roxa e Catupiry|48,90|81,50
+Don Luigi|Mussarela, Gorgonzola, Queijo Brie e Geléia|84,90|141,50
+Don Marcos|Cream cheese, salmão, cebola roxa e rúcula|100,90|167,90
+Don Miguelito|Frango desfiado, parmesão e Catupiry|71,50|118,90
+Don Riva|Palmito, mussarela e Catupiry|74,50|123,50
+Don Thallito|Mussarela, frango, cheddar, bacon e Doritos|75,50|124,90
+Don Zeca|Atum, cream cheese, alho-poró, parmesão e tomate seco|87,50|145,50
+Dois Queijos|Mussarela e Catupiry|54,50|89,90
+Donna Aline|Calabresa moída, cream cheese e parmesão|63,50|105,50
+Donna Gisleni|Brócolis, gergelim, alho frito e azeite português|43,50|71,90
+Donna Jô|Mussarela, queijo brie e presunto parma|84,90|141,50
+Donna Terezinha|Peito de peru, Catupiry, palmito e mussarela|71,50|118,90
+Dr. Anderson Lafuza|Mussarela de búfala, presunto, tomate e orégano|65,90|109,50
+Escarola|Escarola refogada, mussarela e bacon|51,50|85,50
+Frango com Catupiry|Frango e Catupiry|46,90|77,90
+Frango com Cheddar e Bacon|Frango, cheddar e bacon|64,50|106,90
+Frango do Chef Amós|Frango, bacon e mussarela|56,50|93,50
+Italiana|Escarola refogada, calabresa moída, palmito, cebola roxa e mussarela|59,50|98,50
+Lombo com Abacaxi|Lombo canadense, mussarela, Catupiry e abacaxi|78,90|130,90
+Marguerita|Mussarela, parmesão, tomate em rodelas e manjericão|50,50|83,90
+Marguerita do Chef Amós|Mussarela de búfala, tomate-cereja e manjericão|58,50|97,50
+Mussarela|Mussarela (no broto, também com azeitona)|39,90|65,90
+Mussarela de Búfala|Mussarela de búfala|50,50|83,90
+Napolitana do Chef Amós|Alho fresco, azeite português, parmesão e manjericão|54,50|89,90
+Palmito com Catupiry|Palmito e Catupiry|71,50|118,90
+Palmito com Mussarela|Palmito e mussarela|70,50|117,50
+Pepperoni|Mussarela, pepperoni e parmesão|75,90|125,90
+Pepperoni com Catupiry|Pepperoni e Catupiry|74,50|123,50
+Portuguesa|Presunto, ovo, ervilha fresca, cebola roxa e mussarela|50,50|83,90
+Primavera|Palmito, bacon, milho e mussarela|72,90|121,50
+Quatro Queijos|Mussarela, Catupiry, gorgonzola e provolone|66,90|111,50
+Romana Aliche|Mussarela, aliche e tomate|78,90|130,90
+Rúcula|Mussarela de búfala, rúcula e tomate seco|54,50|89,90
+Salmão com Camarão|Cream cheese, alho-poró, salmão, camarão, cebola roxa e rúcula|116,90|194,50
+Siciliana|Champignon, bacon e Catupiry|75,50|124,90
+Toscana|Calabresa e mussarela|46,50|76,90
+Três Queijos|Mussarela, Catupiry e parmesão|61,50|101,90
+Vegetariana|Brócolis, palmito, ervilha fresca, milho, tomate-cereja e mussarela|58,50|97,50
 `
     }]
   },
@@ -166,26 +166,26 @@ Borda Vulcão de Chocolate||20,00|40,00
     grupos: [{
       colunas: ['Broto', 'Grande'],
       dados: `
-Abacaxi|Doce de leite, abacaxi e canela|49,90|65,90
-Banana|Banana, leite condensado e canela em pó|43,90|49,90
-Banana Nevada|Creme de leite, banana, canela e chocolate branco|49,90|65,90
-Banoffee|Banana flambada com canela, chocolate branco e doce de leite|54,90|76,90
-Benjamim Duo|Chocolate ao leite, chocolate preto e Negresco|49,90|65,90
-Brigadeiro|Chocolate com cobertura de granulado|43,90|58,90
-Chocolate ao Leite|Chocolate ao leite|43,90|54,90
-Chocolate Branco com Frutas Vermelhas|Chocolate branco com frutas vermelhas|49,90|65,90
-Chocolate com Uva|Chocolate com uva|52,90|61,90
-Cream Cheese com Frutas Vermelhas|Cream cheese com frutas vermelhas|54,90|65,90
-Doce de Leite com Uva|Doce de leite com uva||65,90
-Kit Kat|Chocolate e Kit Kat em pedaços|48,90|63,90
-Lucy|Doce de leite e coco|49,90|64,90
-Miguelito|Chocolate e M&M's|65,90|76,90
-Mussarela com Doce de Leite|Mussarela com doce de leite|60,90|70,90
-Nutella com Morango|Nutella e morango|60,90|75,90
-Prestígio|Chocolate ao leite e coco ralado fresco|54,90|65,90
-Romeu & Julieta com Catupiry|Goiabada e Catupiry|60,90|64,90
-Romeu & Julieta com Mussarela|Goiabada e mussarela|39,90|64,90
-Sensação|Chocolate e morango|54,90|65,90
+Abacaxi|Doce de leite, abacaxi e canela|47,90|79,50
+Banana|Banana, leite condensado e canela em pó|36,50|59,90
+Banana Nevada|Creme de leite, banana, canela e chocolate branco|47,90|79,50
+Banoffee|Banana flambada com canela, chocolate branco e doce de leite|55,50|92,50
+Benjamim Duo|Chocolate ao leite, chocolate preto e Negresco|47,90|79,50
+Brigadeiro|Chocolate com cobertura de granulado|42,90|70,90
+Chocolate ao Leite|Chocolate ao leite|39,90|65,90
+Chocolate Branco com Frutas Vermelhas|Chocolate branco com frutas vermelhas|47,90|79,50
+Chocolate com Uva|Chocolate com uva|44,90|74,50
+Cream Cheese com Frutas Vermelhas|Cream cheese com frutas vermelhas|47,90|79,50
+Doce de Leite com Uva|Doce de leite com uva||79,50
+Kit Kat|Chocolate e Kit Kat em pedaços|46,50|76,90
+Lucy|Doce de leite e coco|46,90|77,90
+Miguelito|Chocolate e M&M's|55,50|92,50
+Mussarela com Doce de Leite|Mussarela com doce de leite|51,50|85,50
+Nutella com Morango|Nutella e morango|54,90|91,50
+Prestígio|Chocolate ao leite e coco ralado fresco|47,90|79,50
+Romeu & Julieta com Catupiry|Goiabada e Catupiry|46,90|77,90
+Romeu & Julieta com Mussarela|Goiabada e mussarela|46,90|77,90
+Sensação|Chocolate e morango|47,90|79,50
 `
     }]
   },
