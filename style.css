@@ -1,5 +1,75 @@
 /* Don Miguelito Pizzaria — cardápio digital | Desenvolvido por REDESIGNER PPM | v1.0.0 */
 
+/* 0. Tela de carregamento (real) ----------------------------------------- */
+/*
+ * O CSS crítico da tela de carregamento está inline no index.html
+ * (para pintar antes do CSS externo). Aqui ficam os refinamentos:
+ * entrada escalonada (logo → slogan → barra), pulse da logo compatível
+ * com o fade-in (via translate/scale separados), fade-out e reduced-motion.
+ */
+
+.loader {
+  position: fixed; inset: 0; z-index: 9000;
+  display: grid; place-items: center;
+  background: var(--navy-950);
+  transition: opacity .45s ease, visibility .45s;
+}
+.loader.is-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.loader__in {
+  display: grid; justify-items: center; gap: var(--space-4);
+  padding: var(--space-4); text-align: center; max-width: 22rem;
+}
+
+/* Animações da tela de carregamento */
+@keyframes loader-in {
+  from { opacity: 0; translate: 0 8px; }
+  to   { opacity: 1; translate: 0 0;   }
+}
+@keyframes loader-pulse {
+  0%, 100% { scale: 1;    }
+  50%      { scale: 1.03; }
+}
+
+.loader__logo {
+  width: min(60vw, 14rem);
+  height: auto;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, .6));
+  animation:
+    loader-in    .6s cubic-bezier(.22, 1, .36, 1) both,
+    loader-pulse 2s  ease-in-out .8s infinite;
+}
+.loader__slogan {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--cream);
+  letter-spacing: .01em;
+  line-height: 1.5;
+  text-wrap: balance;
+  animation: loader-in .6s cubic-bezier(.22, 1, .36, 1) .25s both;
+}
+.loader__bar {
+  width: 12rem; height: 4px; border-radius: 2px;
+  background: rgba(217, 180, 108, .18);
+  overflow: hidden;
+  animation: loader-in .6s cubic-bezier(.22, 1, .36, 1) .5s both;
+}
+.loader__bar span {
+  display: block; height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--green), var(--gold), var(--red));
+  transition: width .2s linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader__logo,
+  .loader__slogan,
+  .loader__bar { animation: none; }
+  .loader__bar span { transition: none; }
+}
+
 /* 1. Variáveis ------------------------------------------------------------ */
 :root {
   --navy-950: #020a1c;
@@ -209,6 +279,49 @@ button { cursor: pointer; }
   box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, .5);
 }
 
+/* 6.5. Animação lateral de entrada do hero -------------------------------- */
+/*
+ * Comportamento:
+ *   • Estado inicial (JS ativo, sem reduced-motion):
+ *     .hero__txt e .hero__media começam escondidos (opacity: 0) e
+ *     deslocados lateralmente. Isso é feito via html:not(.hero-visivel),
+ *     evitando FOUC e respeitando prefers-reduced-motion.
+ *   • Estado final (.hero-visivel aplicado por script.js):
+ *     os elementos voltam à posição natural com transição suave.
+ *   • <noscript> no index.html revela o hero se o JS estiver desligado.
+ */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Estado inicial escondido */
+  html:not(.hero-visivel) .hero__txt {
+    opacity: 0;
+    transform: translateX(-64px);
+  }
+  html:not(.hero-visivel) .hero__media {
+    opacity: 0;
+    transform: translateX(64px);
+  }
+
+  /* Transição (só dispara quando opacity/transform mudam) */
+  .hero__txt,
+  .hero__media {
+    transition:
+      opacity   .9s cubic-bezier(.22, 1, .36, 1),
+      transform .9s cubic-bezier(.22, 1, .36, 1);
+  }
+
+  /* Pequeno atraso no lado da imagem → efeito escalonado (texto entra primeiro) */
+  html.hero-visivel .hero__media {
+    transition-delay: .12s;
+  }
+
+  /* Evita rolagem horizontal causada pelo translateX inicial */
+  html:not(.hero-visivel) .hero {
+    overflow-x: hidden;  /* fallback para navegadores antigos */
+    overflow-x: clip;    /* modernos: sem criar scroll container */
+  }
+}
+
 /* 7. Cardápio ------------------------------------------------------------- */
 .busca { display: grid; gap: var(--space-2); padding-block: var(--space-4) var(--space-3); }
 .busca label { font-family: var(--font-serif); font-size: var(--text-h3); font-weight: 700; }
@@ -408,6 +521,60 @@ dialog p { margin-top: var(--space-3); color: var(--cream-dim); font-size: var(-
 .banner p { font-size: var(--text-sm); color: var(--cream-dim); max-width: 46rem; }
 .banner p a { text-underline-offset: 3px; }
 .banner__acoes { display: grid; gap: var(--space-2); }
+
+/* 10.5. Popup promocional (10% off) --------------------------------------- */
+
+/* Selo no topo do popup de desconto. */
+dialog .promo-selo {
+  display: inline-block;
+  margin-bottom: var(--space-2);
+  padding: .25rem .75rem;
+  background: var(--gold);
+  color: var(--navy-950);
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: .8rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  border-radius: 999px;
+}
+
+/* Bloco que destaca o código do cupom. */
+dialog .promo-codigo {
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-2);
+  background: rgba(217, 180, 108, .08);
+  border: 2px dashed var(--gold);
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+dialog .promo-codigo code {
+  display: inline-block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 1.35em;
+  font-weight: 700;
+  letter-spacing: .14em;
+  color: var(--gold);
+  /* Permite copiar o cupom com um único clique/toque. */
+  user-select: all;
+  -webkit-user-select: all;
+}
+
+/* Nota de rodapé com o asterisco de condições. */
+dialog .promo-nota {
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--cream-dim);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+dialog .promo-nota span[aria-hidden="true"] {
+  color: var(--gold);
+  font-weight: 700;
+  margin-right: .15em;
+}
 
 /* 11. Páginas legais ------------------------------------------------------ */
 .legal { width: min(100% - 2rem, 46rem); margin-block: var(--space-5) var(--space-6); margin-inline: auto; padding: var(--space-4); background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); }

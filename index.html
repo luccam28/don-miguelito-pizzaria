@@ -15,6 +15,43 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preload" as="image" href="fundo.webp" type="image/webp">
+  <link rel="preload" as="image" href="miguelito.png" fetchpriority="high">
+
+  <!--
+    CSS crítico da tela de carregamento (inline).
+    Garante que o loader pinte INSTANTANEAMENTE, sem FOUC, mesmo
+    antes do style.css externo ser baixado/parseado.
+  -->
+  <style>
+    #loader {
+      position: fixed; inset: 0; z-index: 9000;
+      display: grid; place-items: center;
+      background: #020a1c;
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+      color: #f4e9d3;
+      transition: opacity .45s ease, visibility .45s;
+    }
+    #loader.is-done { opacity: 0; visibility: hidden; pointer-events: none; }
+    #loader .loader__in {
+      display: grid; justify-items: center; gap: 1.5rem;
+      padding: 1.5rem; text-align: center; max-width: 22rem;
+    }
+    #loader .loader__logo { width: min(60vw, 14rem); height: auto; }
+    #loader .loader__slogan {
+      margin: 0; font-size: 1.05rem; line-height: 1.5;
+      letter-spacing: .01em; text-wrap: balance;
+    }
+    #loader .loader__bar {
+      width: 12rem; height: 4px; border-radius: 2px;
+      background: rgba(217, 180, 108, .18); overflow: hidden;
+    }
+    #loader .loader__bar span {
+      display: block; height: 100%; width: 0;
+      background: linear-gradient(90deg, #1f8f4e, #d9b46c, #c8202f);
+      transition: width .25s ease;
+    }
+  </style>
+
   <link rel="stylesheet" href="style.css">
 
   <meta property="og:type" content="restaurant.restaurant">
@@ -60,8 +97,52 @@
 
   <script src="cardapio-dados.js" defer></script>
   <script src="script.js" defer></script>
+
+  <!--
+    Fallback de segurança: se por qualquer motivo script.js falhar ou o
+    fluxo de carregamento travar, remove o loader e revela o hero após 8s.
+    Nada de travar a página em branco.
+  -->
+  <script>
+    window.setTimeout(function () {
+      var l = document.getElementById('loader');
+      if (l && !l.classList.contains('is-done')) {
+        l.classList.add('is-done');
+        window.setTimeout(function () { l.remove(); }, 500);
+      }
+      if (!document.documentElement.classList.contains('hero-visivel')) {
+        document.documentElement.classList.add('hero-visivel');
+      }
+    }, 8000);
+  </script>
+
+  <!--
+    Fallback no-script: se o JS estiver desabilitado, esconde o loader
+    e mostra o hero imediatamente.
+  -->
+  <noscript>
+    <style>
+      #loader { display: none !important; }
+      .hero__txt,
+      .hero__media { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
 </head>
 <body>
+  <!--
+    TELA DE CARREGAMENTO (real).
+    Não é fake: o script.js mede o carregamento efetivo de imagens do DOM,
+    do fundo (fundo.webp), das fontes e do evento window.load. A barra
+    reflete o progresso real. Só some quando tudo terminou.
+  -->
+  <div id="loader" class="loader" role="status" aria-live="polite" aria-label="Carregando o cardápio">
+    <div class="loader__in">
+      <img class="loader__logo" src="miguelito.png" width="240" height="240" alt="" fetchpriority="high">
+      <p class="loader__slogan">Os Melhores Ingredientes. As Melhores Pizzas.</p>
+      <div class="loader__bar" aria-hidden="true"><span></span></div>
+    </div>
+  </div>
+
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
   <header class="header">

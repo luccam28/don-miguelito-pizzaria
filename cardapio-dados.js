@@ -81,6 +81,7 @@ Don Thallito|Mussarela, frango, cheddar, bacon e Doritos|71,90|119,90
 Don Zeca|Atum, cream cheese, alho-poró, parmesão e tomate seco|83,90|139,90
 Dois Queijos|Mussarela e Catupiry|51,90|86,90
 Donna Aline|Calabresa moída, cream cheese e parmesão|60,90|101,90
+Donna Giovanna|Abobrinha, Caponata de Berinjela, Mussarela, Parmesão e Alho Frito|47,90|79,90
 Donna Gisleni|Brócolis, gergelim, alho frito e azeite português|41,90|68,90
 Donna Jô|Mussarela, queijo brie e presunto parma|81,90|135,90
 Donna Terezinha|Peito de peru, Catupiry, palmito e mussarela|68,90|113,90

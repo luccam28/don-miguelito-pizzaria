@@ -69,6 +69,7 @@
     if (analiticoCarregado && antes && antes.estatisticas && !estatisticas) { location.reload(); return; }
     aplicarConsentimento();
     removerBanner();
+    iniciarSequenciaPromo(); // ← Encadeia o popup promocional após o LGPD
   };
 
   const registrar = (evento, dados) => {
@@ -183,8 +184,231 @@
     else addEventListener('resize', ajustarAlturaBanner);
   };
 
-  aplicarConsentimento();
-  if (!lerConsentimento() && temDialog) mostrarBanner();
+  /* ------------------------------------------------------------------ */
+  /* Popup promocional: 10% no 1º pedido pelo WhatsApp                   */
+  /* ------------------------------------------------------------------ */
+
+  const CHAVE_PROMO = 'dm_promo_v1'; // sessionStorage — exibe 1x por sessão
+  const MSG_PROMO =
+    'Olá! Vim pelo cardápio digital da Don Miguelito e quero usar o cupom ' +
+    'MIGUELITO10OFF (10% de desconto no primeiro pedido pelo WhatsApp).';
+
+  let dialogPromo = null;
+
+  /** Já foi exibido nesta sessão? */
+  const promoJaVista = () => {
+    try { return sessionStorage.getItem(CHAVE_PROMO) === '1'; }
+    catch (e) { return false; }
+  };
+
+  /** Marca o popup como exibido (uma vez por sessão). */
+  const marcarPromoVista = () => {
+    try { sessionStorage.setItem(CHAVE_PROMO, '1'); } catch (e) { /* indisponível */ }
+  };
+
+  /** Cria (uma única vez) e abre o diálogo de desconto. */
+  const abrirPromo = (gatilho) => {
+    if (!temDialog) return;
+
+    // Reaproveita o diálogo já criado (se houver).
+    if (dialogPromo) { abrirDialog(dialogPromo, gatilho); return; }
+
+    dialogPromo = criarDialog('dlg-promo', 'dlg-promo-t',
+      '<span class="promo-selo" aria-hidden="true">10% OFF</span>' +
+      '<h2 id="dlg-promo-t">Primeira pedida? Ganhe 10%!</h2>' +
+      '<p>Use o cupom abaixo no seu primeiro pedido feito pelo WhatsApp. ' +
+      'Basta copiar o código e enviar junto com a mensagem.</p>' +
+      '<div class="promo-codigo"><code>MIGUELITO10OFF</code></div>' +
+      '<p class="promo-nota">' +
+        '<span aria-hidden="true">*</span> Desconto válido somente para o primeiro ' +
+        'pedido realizado pelo WhatsApp. Não cumulativo com outras promoções.' +
+      '</p>' +
+      '<div class="dlg-acoes">' +
+        // data-fechar fecha o diálogo; o <a> navega normalmente (nova aba)
+        `<a class="btn btn--wa" href="${urlWhatsApp(MSG_PROMO)}" target="_blank" ` +
+          `rel="noopener noreferrer" data-evento="whatsapp_promo" data-fechar>` +
+          'Usar cupom no WhatsApp</a>' +
+        '<button class="btn btn--ghost" type="button" data-fechar>Agora não</button>' +
+      '</div>');
+
+    // Ao fechar (X, botão, "Agora não", Esc ou link do WhatsApp):
+    // 1) marca como vista nesta sessão; 2) libera a animação do hero.
+    dialogPromo.addEventListener('close', () => {
+      marcarPromoVista();
+      configurarAnimacaoHero();
+    });
+
+    abrirDialog(dialogPromo, gatilho);
+  };
+
+  /* ------------------------------------------------------------------ */
+  /* Animação lateral de entrada do hero                                */
+  /* ------------------------------------------------------------------ */
+
+  /*
+   * Estado inicial: o CSS esconde .hero__txt / .hero__media enquanto
+   * <html> NÃO tem a classe .hero-visivel (ver style.css, seção 6.5).
+   * A classe é adicionada AQUI, disparando a transição CSS.
+   *
+   * Regras:
+   *   • Preferência por interação do usuário (scroll, clique, toque, teclado).
+   *   • Fallback de 3s se o usuário não interagir.
+   *   • Fallback global de 8s está no index.html (segurança total).
+   */
+
+  let animacaoHeroConfigurada = false;
+  let animacaoHeroTimer = null;
+
+  /** Revela o hero adicionando a classe de estado final. */
+  const revelarHero = () => {
+    const html = document.documentElement;
+    if (html.classList.contains('hero-visivel')) return;
+    html.classList.add('hero-visivel');
+    if (animacaoHeroTimer) {
+      clearTimeout(animacaoHeroTimer);
+      animacaoHeroTimer = null;
+    }
+  };
+
+  /** Prepara os listeners de interação que disparam a animação. */
+  const configurarAnimacaoHero = () => {
+    if (animacaoHeroConfigurada) return;
+    animacaoHeroConfigurada = true;
+
+    const html = document.documentElement;
+    if (html.classList.contains('hero-visivel')) return; // já revelado
+
+    // Pequeno atraso: ignora o clique que acabou de fechar o popup.
+    setTimeout(() => {
+      // Se o usuário já rolou durante o delay, revela já.
+      if (window.scrollY > 20) { revelarHero(); return; }
+
+      window.addEventListener('scroll', revelarHero, { passive: true, once: true });
+      window.addEventListener('wheel', revelarHero, { passive: true, once: true });
+      window.addEventListener('touchstart', revelarHero, { passive: true, once: true });
+      window.addEventListener('click', revelarHero, { once: true });
+      window.addEventListener('keydown', revelarHero, { once: true });
+
+      // Fallback: se ninguém interagir, revela após 3s.
+      animacaoHeroTimer = setTimeout(revelarHero, 3000);
+    }, 350);
+  };
+
+  /* ------------------------------------------------------------------ */
+  /* Sequência de entrada: LGPD → Promo → Animação                       */
+  /* ------------------------------------------------------------------ */
+
+  /**
+   * Chamada após o banner LGPD ser resolvido (ou quando ele não é necessário).
+   * Ordem: se o popup promocional já foi visto nesta sessão, vai direto para
+   * a animação do hero; senão, exibe o popup com pequeno delay para o
+   * banner LGPD terminar sua saída visual.
+   */
+  const iniciarSequenciaPromo = () => {
+    if (!temDialog) { configurarAnimacaoHero(); return; }
+    if (promoJaVista()) { configurarAnimacaoHero(); return; }
+    setTimeout(() => abrirPromo($('.fab') || document.body), 400);
+  };
+
+  /* ------------------------------------------------------------------ */
+  /* Tela de carregamento (REAL)                                        */
+  /* ------------------------------------------------------------------ */
+
+  /*
+   * Não é um timer fake. Aguarda de fato:
+   *   1) Todos os <img> do DOM (logo do header, capa, logo do loader…)
+   *      com seus eventos load/error.
+   *   2) O fundo do site (fundo.webp) forçado via new Image().
+   *   3) As fontes via document.fonts.ready.
+   *   4) O evento window.load (rede de segurança).
+   *
+   * A barra de progresso avança conforme cada recurso termina.
+   * Mínimo de 700ms para evitar "flash" quando o cache está quente.
+   */
+
+  const CARREGAMENTO = (() => {
+    const loader = document.getElementById('loader');
+    if (!loader) return { aguardar: () => Promise.resolve() };
+
+    const barra = loader.querySelector('.loader__bar span');
+    const inicio = performance.now();
+    const MIN_MS = 700;
+
+    // Total: imagens do DOM + 1 fundo CSS + 1 fontes + 1 load event
+    const imgsDOM = Array.from(document.images);
+    const extrasCSS = ['fundo.webp'];
+    const total = imgsDOM.length + extrasCSS.length + 2;
+    let feitos = 0;
+
+    const marcarFeito = () => {
+      feitos++;
+      const pct = Math.min(100, Math.round((feitos / total) * 100));
+      if (barra) barra.style.width = pct + '%';
+    };
+
+    const imagensDOMPromises = imgsDOM.map((img) => {
+      if (img.complete) { marcarFeito(); return Promise.resolve(); }
+      return new Promise((resolve) => {
+        img.addEventListener('load', () => { marcarFeito(); resolve(); }, { once: true });
+        img.addEventListener('error', () => { marcarFeito(); resolve(); }, { once: true });
+      });
+    });
+
+    const extrasPromises = extrasCSS.map((src) => new Promise((resolve) => {
+      const im = new Image();
+      im.onload = im.onerror = () => { marcarFeito(); resolve(); };
+      im.src = src;
+    }));
+
+    const fontesPromise = (document.fonts && document.fonts.ready)
+      ? document.fonts.ready.then(() => { marcarFeito(); })
+      : Promise.resolve().then(() => { marcarFeito(); });
+
+    const loadPromise = new Promise((resolve) => {
+      if (document.readyState === 'complete') { marcarFeito(); resolve(); return; }
+      window.addEventListener('load', () => { marcarFeito(); resolve(); }, { once: true });
+    });
+
+    const aguardar = () => Promise.all([
+      ...imagensDOMPromises,
+      ...extrasPromises,
+      fontesPromise,
+      loadPromise,
+    ]).then(() => {
+      const decorrido = performance.now() - inicio;
+      const esperar = Math.max(0, MIN_MS - decorrido);
+      return new Promise((r) => setTimeout(r, esperar));
+    }).then(() => {
+      if (barra) barra.style.width = '100%';
+      // Deixa a barra "chegar em 100%" antes do fade.
+      return new Promise((r) => setTimeout(r, 120));
+    }).then(() => {
+      loader.classList.add('is-done');
+      setTimeout(() => loader.remove(), 500);
+    }).catch(() => {
+      // Em qualquer falha, esconde o loader (nunca deixa o site travado).
+      loader.classList.add('is-done');
+      setTimeout(() => loader.remove(), 500);
+    });
+
+    return { aguardar };
+  })();
+
+  /* ------------------------------------------------------------------ */
+  /* Inicialização (após o carregamento real)                            */
+  /* ------------------------------------------------------------------ */
+
+  const iniciarAplicativo = () => {
+    aplicarConsentimento();
+    if (!lerConsentimento() && temDialog) {
+      mostrarBanner(); // Ao fechar, salvarConsentimento → iniciarSequenciaPromo
+    } else {
+      iniciarSequenciaPromo();
+    }
+  };
+
+  // Só começa o fluxo de popups/animacão depois do loader terminar.
+  CARREGAMENTO.aguardar().then(iniciarAplicativo);
 
   /* ---------- Cliques delegados ---------- */
   document.addEventListener('click', (e) => {
