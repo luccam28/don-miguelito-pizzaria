@@ -512,7 +512,23 @@
         const [nome, desc = '', ...precos] = linha.split('|').map((s) => s.trim());
         const li = criar('li', 'item');
         li.dataset.busca = normalizar(`${nome} ${desc} ${grupo.titulo || ''} ${categoria.titulo}`);
-        li.append(criar('p', 'item__nome', nome));
+
+        // ---------- ETIQUETA "NOVIDADE" ----------
+        // Se o nome terminar com "(NOVIDADE)", extrai essa marcação do texto
+        // e renderiza uma pílula vermelha ao lado do nome.
+        // Ex.: "Donna Giovanna (NOVIDADE)" → "Donna Giovanna" + [NOVIDADE]
+        const regexNovidade = /\s*\(NOVIDADE\)\s*$/i;
+        const ehNovidade = regexNovidade.test(nome);
+        const nomeLimpo = ehNovidade ? nome.replace(regexNovidade, '').trim() : nome;
+
+        const nomeEl = criar('p', 'item__nome', null);
+        nomeEl.append(document.createTextNode(nomeLimpo));
+        if (ehNovidade) {
+          nomeEl.append(criar('span', 'tag-novidade', 'NOVIDADE'));
+        }
+        li.append(nomeEl);
+        // -----------------------------------------
+
         if (desc) li.append(criar('p', 'item__desc', desc));
         const caixa = criar('div', 'item__precos');
         precos.forEach((valor, i) => {

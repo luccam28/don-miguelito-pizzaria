@@ -289,30 +289,53 @@ button { cursor: pointer; }
  *   • Estado final (.hero-visivel aplicado por script.js):
  *     os elementos voltam à posição natural com transição suave.
  *   • <noscript> no index.html revela o hero se o JS estiver desligado.
+ *
+ * Otimização (refresh / mobile):
+ *   • Mobile-first: distância menor (±40px) e duração curta (.4s).
+ *     Sensação "snappy", sem arrastar.
+ *   • Desktop: distância original (±64px) e duração .65s (era .9s).
+ *     Ainda elegante, mas menos "flutuante".
  */
 
 @media (prefers-reduced-motion: no-preference) {
-  /* Estado inicial escondido */
+  /* Estado inicial escondido — versão mobile (padrão) */
   html:not(.hero-visivel) .hero__txt {
     opacity: 0;
-    transform: translateX(-64px);
+    transform: translateX(-40px);
   }
   html:not(.hero-visivel) .hero__media {
     opacity: 0;
-    transform: translateX(64px);
+    transform: translateX(40px);
   }
 
-  /* Transição (só dispara quando opacity/transform mudam) */
+  /* Transição — versão mobile (mais rápida) */
   .hero__txt,
   .hero__media {
     transition:
-      opacity   .9s cubic-bezier(.22, 1, .36, 1),
-      transform .9s cubic-bezier(.22, 1, .36, 1);
+      opacity   .4s cubic-bezier(.22, 1, .36, 1),
+      transform .4s cubic-bezier(.22, 1, .36, 1);
   }
 
-  /* Pequeno atraso no lado da imagem → efeito escalonado (texto entra primeiro) */
+  /* Pequeno atraso no lado da imagem → efeito escalonado (mobile) */
   html.hero-visivel .hero__media {
-    transition-delay: .12s;
+    transition-delay: .06s;
+  }
+
+  /* Desktop: distância original + duração levemente maior */
+  @media (min-width: 56rem) {
+    html:not(.hero-visivel) .hero__txt {
+      transform: translateX(-64px);
+    }
+    html:not(.hero-visivel) .hero__media {
+      transform: translateX(64px);
+    }
+    .hero__txt,
+    .hero__media {
+      transition-duration: .65s;
+    }
+    html.hero-visivel .hero__media {
+      transition-delay: .1s;
+    }
   }
 
   /* Evita rolagem horizontal causada pelo translateX inicial */
@@ -378,6 +401,27 @@ button { cursor: pointer; }
 .preco { display: grid; justify-items: end; text-align: right; line-height: 1.25; }
 .preco small { font-size: .72rem; color: var(--cream-dim); }
 .preco b { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--cream); white-space: nowrap; }
+
+/* Etiqueta "NOVIDADE" — pílula vermelha ao lado do nome do item.
+   Aplicada automaticamente quando o nome termina com "(NOVIDADE)"
+   (ver detecção em script.js, seção "Etiqueta NOVIDADE"). */
+.tag-novidade {
+  display: inline-block;
+  margin-left: .55rem;
+  padding: .18rem .6rem;
+  background: var(--red);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  line-height: 1.2;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
 .vazio { padding-block: var(--space-5); text-align: center; color: var(--cream-dim); }
 
 /* 8. Horários e como chegar ---------------------------------------------- */
