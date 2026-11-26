@@ -1,13 +1,6 @@
 /* Don Miguelito Pizzaria — cardápio digital | Desenvolvido por REDESIGNER PPM | v1.0.0 */
 
 /* 0. Tela de carregamento (real) ----------------------------------------- */
-/*
- * O CSS crítico da tela de carregamento está inline no index.html
- * (para pintar antes do CSS externo). Aqui ficam os refinamentos:
- * entrada escalonada (logo → slogan → barra), pulse da logo compatível
- * com o fade-in (via translate/scale separados), fade-out e reduced-motion.
- */
-
 .loader {
   position: fixed; inset: 0; z-index: 9000;
   display: grid; place-items: center;
@@ -24,7 +17,6 @@
   padding: var(--space-4); text-align: center; max-width: 22rem;
 }
 
-/* Animações da tela de carregamento */
 @keyframes loader-in {
   from { opacity: 0; translate: 0 8px; }
   to   { opacity: 1; translate: 0 0;   }
@@ -103,7 +95,7 @@
 
   --radius: .75rem;
   --wrap: 72rem;
-  --header-h: 4rem; /* Altura compacta do header no mobile */
+  --header-h: 4rem;
   --chips-h: 3.5rem;
   --banner-h: 0px;
 }
@@ -197,32 +189,18 @@ button { cursor: pointer; }
   position: sticky; top: 0; z-index: 60;
   background: var(--panel); border-bottom: 1px solid var(--line);
   padding-top: env(safe-area-inset-top, 0px);
-  overflow: visible; /* Permite que a logo "vaze" para baixo sem empurrar o header */
+  overflow: visible;
 }
 @supports (backdrop-filter: blur(6px)) {
   .header { backdrop-filter: blur(8px); }
 }
-.header__in { 
-  display: flex; 
-  align-items: center; 
-  gap: var(--space-3); 
-  min-height: var(--header-h); 
-}
+.header__in { display: flex; align-items: center; gap: var(--space-3); min-height: var(--header-h); }
 
-/* LOGO AJUSTADA: Fica grande, mas "vaza" sem aumentar o header */
-.brand { 
-  display: flex; 
-  align-items: center; 
-  margin-right: auto; 
-  height: 100%;
-  position: relative;
-  z-index: 65;
-}
-.brand img { 
-  height: calc(var(--header-h) + 1.5rem); /* A imagem é maior que o header */
-  width: auto; 
-  max-width: none;
-  margin-block: -0.75rem; /* Puxa a imagem para cima e para baixo para não esticar o header */
+.brand { display: flex; align-items: center; margin-right: auto; height: 100%; position: relative; z-index: 65; }
+.brand img {
+  height: calc(var(--header-h) + 1.5rem);
+  width: auto; max-width: none;
+  margin-block: -0.75rem;
   filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
 }
 
@@ -281,24 +259,17 @@ button { cursor: pointer; }
 
 /* 6.5. Animação lateral de entrada do hero -------------------------------- */
 /*
- * Comportamento:
- *   • Estado inicial (JS ativo, sem reduced-motion):
- *     .hero__txt e .hero__media começam escondidos (opacity: 0) e
- *     deslocados lateralmente. Isso é feito via html:not(.hero-visivel),
- *     evitando FOUC e respeitando prefers-reduced-motion.
- *   • Estado final (.hero-visivel aplicado por script.js):
- *     os elementos voltam à posição natural com transição suave.
- *   • <noscript> no index.html revela o hero se o JS estiver desligado.
+ * Estado inicial (JS ativo, sem reduced-motion):
+ *   .hero__txt começa deslocado à esquerda, .hero__media à direita.
+ * Quando <html> recebe .hero-visivel (via script.js), ambos deslizam
+ * para o centro com transição suave. O hero é revelado IMEDIATAMENTE
+ * após o loader (em paralelo aos popups LGPD/promo).
  *
  * Otimização (refresh / mobile):
- *   • Mobile-first: distância menor (±40px) e duração curta (.4s).
- *     Sensação "snappy", sem arrastar.
- *   • Desktop: distância original (±64px) e duração .65s (era .9s).
- *     Ainda elegante, mas menos "flutuante".
+ *   • Mobile: distância menor (±40px) e duração .4s (snappy).
+ *   • Desktop: distância ±64px e duração .65s (elegante, menos flutuante).
  */
-
 @media (prefers-reduced-motion: no-preference) {
-  /* Estado inicial escondido — versão mobile (padrão) */
   html:not(.hero-visivel) .hero__txt {
     opacity: 0;
     transform: translateX(-40px);
@@ -308,7 +279,6 @@ button { cursor: pointer; }
     transform: translateX(40px);
   }
 
-  /* Transição — versão mobile (mais rápida) */
   .hero__txt,
   .hero__media {
     transition:
@@ -316,12 +286,10 @@ button { cursor: pointer; }
       transform .4s cubic-bezier(.22, 1, .36, 1);
   }
 
-  /* Pequeno atraso no lado da imagem → efeito escalonado (mobile) */
   html.hero-visivel .hero__media {
     transition-delay: .06s;
   }
 
-  /* Desktop: distância original + duração levemente maior */
   @media (min-width: 56rem) {
     html:not(.hero-visivel) .hero__txt {
       transform: translateX(-64px);
@@ -338,10 +306,9 @@ button { cursor: pointer; }
     }
   }
 
-  /* Evita rolagem horizontal causada pelo translateX inicial */
   html:not(.hero-visivel) .hero {
-    overflow-x: hidden;  /* fallback para navegadores antigos */
-    overflow-x: clip;    /* modernos: sem criar scroll container */
+    overflow-x: hidden;
+    overflow-x: clip;
   }
 }
 
@@ -385,11 +352,7 @@ button { cursor: pointer; }
 .grupo__nota { margin-top: var(--space-2); font-size: var(--text-sm); color: var(--cream-dim); }
 .aviso-alcool { margin-top: var(--space-4); font-size: var(--text-sm); color: var(--cream-dim); border-left: 3px solid var(--red); padding-left: var(--space-3); }
 
-.itens {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0 2rem;
-}
+.itens { display: grid; grid-template-columns: 1fr; gap: 0 2rem; }
 
 .item {
   display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .2rem var(--space-3); align-items: baseline;
@@ -402,9 +365,6 @@ button { cursor: pointer; }
 .preco small { font-size: .72rem; color: var(--cream-dim); }
 .preco b { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--cream); white-space: nowrap; }
 
-/* Etiqueta "NOVIDADE" — pílula vermelha ao lado do nome do item.
-   Aplicada automaticamente quando o nome termina com "(NOVIDADE)"
-   (ver detecção em script.js, seção "Etiqueta NOVIDADE"). */
 .tag-novidade {
   display: inline-block;
   margin-left: .55rem;
@@ -441,11 +401,7 @@ button { cursor: pointer; }
   background: var(--panel);
   padding-block: var(--space-5) calc(var(--space-5) + 4.5rem + env(safe-area-inset-bottom, 0px));
 }
-.footer__in { 
-  display: grid; 
-  grid-template-columns: 1fr; 
-  gap: var(--space-5); 
-}
+.footer__in { display: grid; grid-template-columns: 1fr; gap: var(--space-5); }
 .footer__col { display: grid; gap: var(--space-3); align-content: start; }
 
 .footer__tit {
@@ -457,12 +413,7 @@ button { cursor: pointer; }
   border-bottom: 1px solid var(--line);
 }
 
-.footer__endereco {
-  font-style: normal;
-  font-size: var(--text-sm);
-  color: var(--cream-dim);
-  line-height: 1.7;
-}
+.footer__endereco { font-style: normal; font-size: var(--text-sm); color: var(--cream-dim); line-height: 1.7; }
 .footer__contato { font-size: var(--text-sm); }
 .footer__contato a {
   color: var(--cream); font-weight: 600; text-decoration: none;
@@ -471,41 +422,22 @@ button { cursor: pointer; }
 }
 .footer__contato a:hover { color: var(--gold); border-color: var(--cream); }
 
-.footer__redes {
-  display: flex;
-  gap: var(--space-3);
-}
+.footer__redes { display: flex; gap: var(--space-3); }
 .footer__redes a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  background: rgba(217, 180, 108, 0.1);
-  color: var(--cream);
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2.5rem; height: 2.5rem; border-radius: 50%;
+  background: rgba(217, 180, 108, 0.1); color: var(--cream);
   transition: background-color 0.2s, color 0.2s;
 }
-.footer__redes a:hover {
-  background: var(--gold);
-  color: var(--navy-950);
-}
+.footer__redes a:hover { background: var(--gold); color: var(--navy-950); }
 
-.footer__pagamentos {
-  display: flex;
-  flex-direction: column;
-  gap: .5rem;
-  font-size: var(--text-sm);
-  color: var(--cream-dim);
-}
+.footer__pagamentos { display: flex; flex-direction: column; gap: .5rem; font-size: var(--text-sm); color: var(--cream-dim); }
 
 .footer__links { display: flex; flex-direction: column; gap: .25rem; }
 .footer__links a,
 .footer__links button {
-  padding: .4rem 0;
-  background: none; border: 0;
-  text-decoration: none;
-  color: var(--cream-dim);
+  padding: .4rem 0; background: none; border: 0;
+  text-decoration: none; color: var(--cream-dim);
   font-size: var(--text-sm); text-align: left;
   transition: color .2s;
 }
@@ -514,12 +446,9 @@ button { cursor: pointer; }
 
 .footer__credito {
   grid-column: 1 / -1;
-  margin-top: var(--space-4);
-  padding-top: var(--space-4);
+  margin-top: var(--space-4); padding-top: var(--space-4);
   border-top: 1px solid var(--line);
-  font-size: var(--text-sm);
-  color: var(--cream-dim);
-  line-height: 1.6;
+  font-size: var(--text-sm); color: var(--cream-dim); line-height: 1.6;
 }
 .footer__credito a { color: var(--cream); text-underline-offset: 3px; }
 
@@ -567,58 +496,33 @@ dialog p { margin-top: var(--space-3); color: var(--cream-dim); font-size: var(-
 .banner__acoes { display: grid; gap: var(--space-2); }
 
 /* 10.5. Popup promocional (10% off) --------------------------------------- */
-
-/* Selo no topo do popup de desconto. */
 dialog .promo-selo {
   display: inline-block;
   margin-bottom: var(--space-2);
   padding: .25rem .75rem;
-  background: var(--gold);
-  color: var(--navy-950);
-  font-family: var(--font-serif);
-  font-weight: 700;
-  font-size: .8rem;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  border-radius: 999px;
+  background: var(--gold); color: var(--navy-950);
+  font-family: var(--font-serif); font-weight: 700; font-size: .8rem;
+  letter-spacing: .1em; text-transform: uppercase; border-radius: 999px;
 }
-
-/* Bloco que destaca o código do cupom. */
 dialog .promo-codigo {
   margin-top: var(--space-4);
   padding: var(--space-3) var(--space-2);
   background: rgba(217, 180, 108, .08);
-  border: 2px dashed var(--gold);
-  border-radius: var(--radius);
+  border: 2px dashed var(--gold); border-radius: var(--radius);
   text-align: center;
 }
-
 dialog .promo-codigo code {
   display: inline-block;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-  font-size: 1.35em;
-  font-weight: 700;
-  letter-spacing: .14em;
+  font-size: 1.35em; font-weight: 700; letter-spacing: .14em;
   color: var(--gold);
-  /* Permite copiar o cupom com um único clique/toque. */
-  user-select: all;
-  -webkit-user-select: all;
+  user-select: all; -webkit-user-select: all;
 }
-
-/* Nota de rodapé com o asterisco de condições. */
 dialog .promo-nota {
-  margin-top: var(--space-3);
-  font-size: var(--text-sm);
-  color: var(--cream-dim);
-  font-style: italic;
-  line-height: 1.5;
+  margin-top: var(--space-3); font-size: var(--text-sm);
+  color: var(--cream-dim); font-style: italic; line-height: 1.5;
 }
-
-dialog .promo-nota span[aria-hidden="true"] {
-  color: var(--gold);
-  font-weight: 700;
-  margin-right: .15em;
-}
+dialog .promo-nota span[aria-hidden="true"] { color: var(--gold); font-weight: 700; margin-right: .15em; }
 
 /* 11. Páginas legais ------------------------------------------------------ */
 .legal { width: min(100% - 2rem, 46rem); margin-block: var(--space-5) var(--space-6); margin-inline: auto; padding: var(--space-4); background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); }
@@ -641,10 +545,10 @@ dialog .promo-nota span[aria-hidden="true"] {
 }
 
 @media (min-width: 56rem) {
-  :root { --header-h: 4.5rem; } /* Altura compacta no desktop */
-  .brand img { 
-    height: calc(var(--header-h) + 2rem); /* Logo maior */
-    margin-block: -1rem; /* Compensa o tamanho extra */
+  :root { --header-h: 4.5rem; }
+  .brand img {
+    height: calc(var(--header-h) + 2rem);
+    margin-block: -1rem;
   }
   .nav-toggle { display: none; }
   .nav {
@@ -659,17 +563,8 @@ dialog .promo-nota span[aria-hidden="true"] {
   .item { padding-block: 1rem; }
   .banner__in { grid-template-columns: 1fr auto; align-items: center; }
   .legal { padding: var(--space-5); }
-  
-  /* Layout de 2 colunas para os itens do cardápio */
-  .itens {
-    grid-template-columns: 1fr 1fr;
-  }
-  
-  /* Rodapé com 3 colunas em desktop */
-  .footer__in { 
-    grid-template-columns: 1fr 1fr 1fr; 
-    column-gap: var(--space-6); 
-  }
+  .itens { grid-template-columns: 1fr 1fr; }
+  .footer__in { grid-template-columns: 1fr 1fr 1fr; column-gap: var(--space-6); }
 }
 
 @media (min-width: 90rem) {

@@ -232,7 +232,8 @@
       '</div>');
 
     // Ao fechar (X, botão, "Agora não", Esc ou link do WhatsApp):
-    // 1) marca como vista nesta sessão; 2) libera a animação do hero.
+    // 1) marca como vista nesta sessão; 2) chama configurarAnimacaoHero()
+    // como fallback (no-op se o hero já foi revelado em iniciarAplicativo).
     dialogPromo.addEventListener('close', () => {
       marcarPromoVista();
       configurarAnimacaoHero();
@@ -248,12 +249,12 @@
   /*
    * Estado inicial: o CSS esconde .hero__txt / .hero__media enquanto
    * <html> NÃO tem a classe .hero-visivel (ver style.css, seção 6.5).
-   * A classe é adicionada AQUI, disparando a transição CSS.
+   * A classe é adicionada em `revelarHero()`, chamado IMEDIATAMENTE
+   * após o loader (ver iniciarAplicativo).
    *
-   * Regras:
-   *   • Preferência por interação do usuário (scroll, clique, toque, teclado).
-   *   • Fallback de 3s se o usuário não interagir.
-   *   • Fallback global de 8s está no index.html (segurança total).
+   * A função `configurarAnimacaoHero()` abaixo virou fallback de
+   * segurança — só age se por algum motivo o hero ainda estiver oculto
+   * (ex.: browser antigo sem dialog, JS quebrado em algum ponto raro).
    */
 
   let animacaoHeroConfigurada = false;
@@ -270,17 +271,16 @@
     }
   };
 
-  /** Prepara os listeners de interação que disparam a animação. */
+  /** Fallback: se por algum motivo o hero ainda estiver oculto, arma
+   *  listeners de interação + timer de 3s para revelá-lo. */
   const configurarAnimacaoHero = () => {
     if (animacaoHeroConfigurada) return;
     animacaoHeroConfigurada = true;
 
     const html = document.documentElement;
-    if (html.classList.contains('hero-visivel')) return; // já revelado
+    if (html.classList.contains('hero-visivel')) return; // já revelado — no-op
 
-    // Pequeno atraso: ignora o clique que acabou de fechar o popup.
     setTimeout(() => {
-      // Se o usuário já rolou durante o delay, revela já.
       if (window.scrollY > 20) { revelarHero(); return; }
 
       window.addEventListener('scroll', revelarHero, { passive: true, once: true });
@@ -289,24 +289,24 @@
       window.addEventListener('click', revelarHero, { once: true });
       window.addEventListener('keydown', revelarHero, { once: true });
 
-      // Fallback: se ninguém interagir, revela após 3s.
       animacaoHeroTimer = setTimeout(revelarHero, 3000);
     }, 350);
   };
 
   /* ------------------------------------------------------------------ */
-  /* Sequência de entrada: LGPD → Promo → Animação                       */
+  /* Sequência de popups: LGPD → Promo (roda em paralelo ao hero)       */
   /* ------------------------------------------------------------------ */
 
   /**
    * Chamada após o banner LGPD ser resolvido (ou quando ele não é necessário).
-   * Ordem: se o popup promocional já foi visto nesta sessão, vai direto para
-   * a animação do hero; senão, exibe o popup com pequeno delay para o
-   * banner LGPD terminar sua saída visual.
+   * Abre o popup promocional se ainda não foi visto nesta sessão.
+   *
+   * IMPORTANTE: o hero NÃO depende mais desta função. Ele já foi revelado
+   * em `iniciarAplicativo()` e está animando em paralelo aos popups.
    */
   const iniciarSequenciaPromo = () => {
-    if (!temDialog) { configurarAnimacaoHero(); return; }
-    if (promoJaVista()) { configurarAnimacaoHero(); return; }
+    if (!temDialog) return;
+    if (promoJaVista()) return; // já vista — hero já está visível
     setTimeout(() => abrirPromo($('.fab') || document.body), 400);
   };
 
@@ -399,9 +399,21 @@
   /* ------------------------------------------------------------------ */
 
   const iniciarAplicativo = () => {
+    // ---------------------------------------------------------------
+    // FIX DO HIATO: revela o hero IMEDIATAMENTE após o loader.
+    //
+    // Antes, o hero só aparecia depois que o usuário fechava o popup
+    // promocional — deixando a página "vazia" durante todo o fluxo.
+    //
+    // Agora, loader some + hero entra (animação de 400/650ms) e, em
+    // paralelo, os popups aparecem por cima. A ordem LGPD → promo é
+    // preservada. Em momento nenhum a página fica em branco.
+    // ---------------------------------------------------------------
+    revelarHero();
+
     aplicarConsentimento();
     if (!lerConsentimento() && temDialog) {
-      mostrarBanner(); // Ao fechar, salvarConsentimento → iniciarSequenciaPromo
+      mostrarBanner(); // Ao fechar → salvarConsentimento → iniciarSequenciaPromo
     } else {
       iniciarSequenciaPromo();
     }
@@ -645,4 +657,67 @@
     }, { threshold: 0.15 });
     ['cardapio', 'info'].forEach((id) => { const el = document.getElementById(id); if (el) obs.observe(el); });
   }
+  /* ------------------------------------------------------------------ */
+  /* Pizza Lottie do hero (pizza-hero.json)                              */
+  /* Bloco isolado: qualquer falha aqui é ignorada e a pizza em CSS      */
+  /* continua como fallback.                                             */
+  /* ------------------------------------------------------------------ */
+  (() => {
+    try {
+      const caixa = document.getElementById('pizza-lottie');
+      // Sem container ou sem a biblioteca (ex.: arquivo não carregou) → fallback em CSS.
+      if (!caixa || !window.lottie) return;
+
+      const html = document.documentElement;
+      const anim = window.lottie.loadAnimation({
+        container: caixa,
+        renderer: 'svg',
+        loop: true,
+        autoplay: false,
+        path: 'pizza-hero.json',
+        rendererSettings: { preserveAspectRatio: 'xMidYMid meet' }
+      });
+
+      let heroVisivel = html.classList.contains('hero-visivel');
+      let naTela = true;
+
+      /* Toca só com o hero revelado e visível na tela (economiza CPU). */
+      const atualizar = () => {
+        if (reduzMovimento) return;               // reduced motion: fica no quadro estático
+        if (heroVisivel && naTela) anim.play(); else anim.pause();
+      };
+
+      // JSON carregado: mostra o Lottie e esconde a pizza em CSS.
+      anim.addEventListener('DOMLoaded', () => {
+        html.classList.add('lottie-ok');
+        if (reduzMovimento) anim.goToAndStop(135, true); // pizza pronta (frame 135)
+        else anim.goToAndStop(0, true);
+        atualizar();
+      });
+      // Falha ao carregar o JSON (ex.: abrindo via file://): mantém o fallback.
+      anim.addEventListener('data_failed', () => html.classList.remove('lottie-ok'));
+
+      // Espera o hero ser revelado (classe .hero-visivel no <html>).
+      if (!heroVisivel) {
+        const obsClasse = new MutationObserver(() => {
+          if (html.classList.contains('hero-visivel')) {
+            heroVisivel = true;
+            obsClasse.disconnect();
+            atualizar();
+          }
+        });
+        obsClasse.observe(html, { attributes: true, attributeFilter: ['class'] });
+      }
+
+      // Pausa quando o hero sai da tela.
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver((entradas) => {
+          naTela = entradas[0].isIntersecting;
+          atualizar();
+        }, { threshold: 0.1 }).observe(caixa);
+      }
+    } catch (erro) {
+      /* silencioso: o fallback em CSS cobre */
+    }
+  })();
 })();
