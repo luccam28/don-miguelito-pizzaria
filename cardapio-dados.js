@@ -115,54 +115,6 @@ Vegetariana|Brócolis, palmito, ervilha fresca, milho, tomate-cereja e mussarela
     }]
   },
   {
-    id: 'bordas', curto: 'Bordas e adicionais', titulo: 'Bordas e adicionais',
-    intro: '',
-    grupos: [
-      {
-        titulo: 'Bordas das pizzas salgadas', colunas: ['Broto', 'Grande'],
-        dados: `
-Borda Catupiry e Cheddar||23,90|23,90
-Borda de Chocolate||17,90|23,90
-Borda de Gergelim||6,90|9,90
-Borda Mussarela||28,90|28,90
-Borda Vulcão (Catupiry, Cheddar e Mussarela)||34,90|51,90
-`
-      },
-      {
-        titulo: 'Adicionais', colunas: [],
-        dados: `
-Alho frito||5,90
-Bacon||9,90
-Calabresa||9,90
-Camarão||34,90
-Catupiry||17,90
-Cebola roxa||5,90
-Cheddar||17,90
-Gorgonzola||17,90
-Massa||11,90
-Milho||5,90
-Molho de tomate||5,90
-Mussarela||17,90
-Palmito||17,90
-Parmesão||17,90
-Pepperoni||17,90
-Queijo brie||17,90
-Tomate italiano||5,90
-`
-      },
-      {
-        titulo: 'Bordas das pizzas doces', nota: 'Escolha 1 opção de borda.', colunas: ['Broto', 'Grande'],
-        dados: `
-Borda de Chocolate||17,90|23,90
-Borda de Gergelim||6,90|9,90
-Borda Mussarela||28,90|28,90
-Borda Vulcão (Catupiry, Cheddar e Mussarela)||34,90|51,90
-Borda Vulcão de Chocolate||28,90|46,90
-`
-      }
-    ]
-  },
-  {
     id: 'pizzas-doces', curto: 'Pizzas doces', titulo: 'Pizzas doces',
     intro: '',
     grupos: [{
@@ -190,6 +142,58 @@ Romeu & Julieta com Mussarela|Goiabada e mussarela|44,90|74,90
 Sensação|Chocolate e morango|45,90|75,90
 `
     }]
+  },
+
+   {
+    id: 'bordas', curto: 'Bordas e adicionais', titulo: 'Bordas e adicionais',
+    intro: '',
+    grupos: [
+      {
+        titulo: 'Bordas das pizzas salgadas', colunas: ['Broto', 'Grande'],
+        dados: `
+Borda Catupiry e Cheddar||23,90|23,90
+Borda de Chocolate||17,90|23,90
+Borda de Gergelim||6,90|9,90
+Borda Mussarela||28,90|28,90
+Borda Vulcão (Catupiry, Cheddar e Mussarela)||34,90|51,90
+`
+      },
+
+           {
+        titulo: 'Adicionais', colunas: [],
+        dados: `
+Alho frito||5,90
+Bacon||9,90
+Calabresa||9,90
+Camarão||34,90
+Catupiry||17,90
+Cebola roxa||5,90
+Cheddar||17,90
+Gorgonzola||17,90
+Massa||11,90
+Milho||5,90
+Molho de tomate||5,90
+Mussarela||17,90
+Palmito||17,90
+Parmesão||17,90
+Pepperoni||17,90
+Queijo brie||17,90
+Tomate italiano||5,90
+`
+      },
+           {
+        titulo: 'Bordas das pizzas doces', nota: 'Escolha 1 opção de borda.', colunas: ['Broto', 'Grande'],
+        dados: `
+Borda de Chocolate||17,90|23,90
+Borda de Gergelim||6,90|9,90
+Borda Mussarela||28,90|28,90
+Borda Vulcão (Catupiry, Cheddar e Mussarela)||34,90|51,90
+Borda Vulcão de Chocolate||28,90|46,90
+`
+      },
+
+    
+    ]
   },
   {
     id: 'esfihas', curto: 'Esfihas', titulo: 'Esfihas',
