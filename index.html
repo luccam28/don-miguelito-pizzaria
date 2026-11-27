@@ -180,11 +180,56 @@
           </div>
         </div>
         <div class="hero__media">
-          <picture>
-            <source type="image/webp" srcset="capa.webp">
-            <img src="capa.jpg" width="1024" height="1536" fetchpriority="high"
-                 alt="Pizza napolitana de borda alta e dourada, com mussarela e folhas de manjericão sobre uma tábua de madeira">
-          </picture>
+          <!--
+            Prato animado (substitui a antiga capa.jpg): o pizza.png foi recortado em
+            camadas. Os ingredientes são "jogados" de fora do quadro e a pizza gira
+            até assentar. Posição final = composição original do pizza.png.
+            Animação em style.css (seção 6.6), disparada por html.hero-visivel.
+          -->
+          <div class="prato" role="img" aria-label="Pizza napolitana com mussarela e manjericão, cercada por tomates, azeite e mussarela fresca">
+            <!-- Ingredientes (entram em sequência; --d = atraso, --fx/--fy/--rot = ponto de partida) -->
+            <img src="ing-01.webp" width="170" height="147" alt="" decoding="async" draggable="false"
+                 style="--l:54.78%;--t:0%;--w:17.04%;--fx:70.66%;--fy:-412.6%;--rot:177deg;--d:0.54s">
+            <img src="ing-02.webp" width="134" height="159" alt="" decoding="async" draggable="false"
+                 style="--l:21.46%;--t:9.65%;--w:13.38%;--fx:-178.88%;--fy:-359.24%;--rot:-214deg;--d:0.63s">
+            <img src="ing-03.webp" width="94" height="179" alt="" decoding="async" draggable="false"
+                 style="--l:0%;--t:71.4%;--w:9.43%;--fx:-487.92%;--fy:231.72%;--rot:251deg;--d:0.72s">
+            <img src="ing-04.webp" width="146" height="137" alt="" decoding="async" draggable="false"
+                 style="--l:22.23%;--t:90.82%;--w:14.56%;--fx:-123.34%;--fy:433.8%;--rot:-288deg;--d:0.81s">
+            <img src="ing-05.webp" width="107" height="140" alt="" decoding="async" draggable="false"
+                 style="--l:18.04%;--t:75.36%;--w:10.73%;--fx:-294.99%;--fy:381.49%;--rot:165deg;--d:0.9s">
+            <img src="ing-06.webp" width="133" height="118" alt="" decoding="async" draggable="false"
+                 style="--l:5.54%;--t:69.9%;--w:13.27%;--fx:-340.52%;--fy:360.1%;--rot:-202deg;--d:0.99s">
+            <img src="ing-07.webp" width="116" height="117" alt="" decoding="async" draggable="false"
+                 style="--l:8.14%;--t:16.73%;--w:11.62%;--fx:-339.6%;--fy:-407.66%;--rot:239deg;--d:1.08s">
+            <img src="ing-08.webp" width="106" height="103" alt="" decoding="async" draggable="false"
+                 style="--l:25.88%;--t:1.23%;--w:10.61%;--fx:-156.72%;--fy:-578.84%;--rot:-276deg;--d:1.17s">
+            <img src="ing-09.webp" width="86" height="128" alt="" decoding="async" draggable="false"
+                 style="--l:1.42%;--t:24.41%;--w:8.61%;--fx:-585.3%;--fy:-282.37%;--rot:153deg;--d:1.26s">
+            <img src="ing-10.webp" width="90" height="78" alt="" decoding="async" draggable="false"
+                 style="--l:52.89%;--t:94.74%;--w:9.02%;--fx:71.63%;--fy:786.31%;--rot:-190deg;--d:1.35s">
+            <img src="ing-11.webp" width="101" height="84" alt="" decoding="async" draggable="false"
+                 style="--l:35.5%;--t:8.62%;--w:10.08%;--fx:-99.88%;--fy:-730.67%;--rot:227deg;--d:1.44s">
+            <img src="ing-12.webp" width="114" height="74" alt="" decoding="async" draggable="false"
+                 style="--l:85.61%;--t:20.73%;--w:11.44%;--fx:389.74%;--fy:-584.6%;--rot:-264deg;--d:1.53s">
+            <img src="ing-13.webp" width="59" height="73" alt="" decoding="async" draggable="false"
+                 style="--l:93.81%;--t:56.17%;--w:5.9%;--fx:1014.07%;--fy:226.12%;--rot:141deg;--d:1.62s">
+            <img src="ing-14.webp" width="55" height="54" alt="" decoding="async" draggable="false"
+                 style="--l:88.56%;--t:76.54%;--w:5.54%;--fx:782.3%;--fy:825.96%;--rot:-178deg;--d:1.71s">
+            <img src="ing-15.webp" width="209" height="209" alt="" decoding="async" draggable="false"
+                 style="--l:2.18%;--t:83.35%;--w:20.93%;--fx:-156.28%;--fy:252.33%;--rot:215deg;--d:1.8s">
+            <img src="ing-16.webp" width="287" height="239" alt="" decoding="async" draggable="false"
+                 style="--l:29.36%;--t:77.1%;--w:28.71%;--fx:-25.71%;--fy:257.15%;--rot:-252deg;--d:1.89s">
+            <img src="ing-17.webp" width="337" height="262" alt="" decoding="async" draggable="false"
+                 style="--l:61.91%;--t:80.58%;--w:33.67%;--fx:80.99%;--fy:212.22%;--rot:289deg;--d:1.98s">
+            <img src="ing-18.webp" width="305" height="263" alt="" decoding="async" draggable="false"
+                 style="--l:65.8%;--t:3.88%;--w:30.48%;--fx:99.15%;--fy:-205.85%;--rot:-166deg;--d:2.07s">
+            <img src="ing-19.webp" width="223" height="232" alt="" decoding="async" draggable="false"
+                 style="--l:0.94%;--t:0%;--w:22.29%;--fx:-143.58%;--fy:-228.59%;--rot:203deg;--d:2.16s">
+            <!-- Pizza com a fatia (gira em torno do centro do disco) -->
+            <img class="prato__pizza" src="pizza.webp" width="909" height="956" alt="" decoding="async" draggable="false"
+                 style="--l:4.54%;--t:18.35%;--w:90.92%;--ox:48.84%;--oy:45.16%">
+          </div>
         </div>
       </div>
     </section>
