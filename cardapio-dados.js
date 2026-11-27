@@ -396,6 +396,7 @@ Velho Barreiro (dose)||29,90
 Vodka Absolut||40,90
 Vodka Smirnoff||34,90
 Whisky Red Label (dose)||41,90
+Whisky Chivas Regal (dose)||39,90
 `
       },
       {
