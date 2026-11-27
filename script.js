@@ -9,10 +9,28 @@
   const MSG_PEDIDO = 'Olá! Vim pelo cardápio digital da Don Miguelito e gostaria de fazer um pedido.';
   const MSG_DUVIDA = 'Olá! Vim pelo cardápio digital da Don Miguelito e tenho uma dúvida.';
 
+  /*
+   * HORÁRIOS — um ou mais turnos por dia.
+   * Formato de cada turno: [hora_abre, min_abre, hora_fecha, min_fecha].
+   * Use 24:00 (1440 min) para "fecha à meia-noite".
+   *
+   * Turno único (só noite), de segunda a domingo:
+   *   • Segunda a quinta  → 17h às 23h30
+   *   • Sexta e sábado    → 17h à meia-noite
+   *   • Domingo           → 17h às 23h30
+   */
   const HORARIOS = (() => {
-    const ter_qui = [[11, 0, 15, 0], [17, 0, 23, 30]];
-    const sex_sab = [[11, 0, 15, 0], [17, 0, 24, 0]];
-    return { 0: [[11, 0, 15, 0], [17, 0, 23, 45]], 2: ter_qui, 3: ter_qui, 4: ter_qui, 5: sex_sab, 6: sex_sab };
+    const seg_qui = [[17, 0, 23, 30]];
+    const sex_sab = [[17, 0, 24, 0]];
+    return {
+      0: [[17, 0, 23, 30]], // Domingo
+      1: seg_qui,            // Segunda
+      2: seg_qui,            // Terça
+      3: seg_qui,            // Quarta
+      4: seg_qui,            // Quinta
+      5: sex_sab,            // Sexta
+      6: sex_sab             // Sábado
+    };
   })();
 
   const $ = (seletor, raiz = document) => raiz.querySelector(seletor);
@@ -480,7 +498,9 @@
     let texto, estado = 'neutro';
     const hoje = HORARIOS[agora.dia];
     if (!hoje) {
-      texto = 'Segunda: confirme pelo WhatsApp';
+      // Sem horário definido para o dia — fallback (não deve ocorrer na
+      // configuração atual, todos os dias estão mapeados).
+      texto = 'Feriado: confirme pelo WhatsApp';
     } else {
       const faixas = hoje.map((f) => [f[0] * 60 + f[1], f[2] * 60 + f[3]]);
       const atual = faixas.find(([ini, fim]) => agora.min >= ini && agora.min < fim);
@@ -657,6 +677,7 @@
     }, { threshold: 0.15 });
     ['cardapio', 'info'].forEach((id) => { const el = document.getElementById(id); if (el) obs.observe(el); });
   }
+
   /* ------------------------------------------------------------------ */
   /* Pizza Lottie do hero (pizza-hero.json)                              */
   /* Bloco isolado: qualquer falha aqui é ignorada e a pizza em CSS      */
